@@ -1,0 +1,52 @@
+.mainMenu{
+    position: absolute;
+    bottom: 2.5vw;
+    display: inline-block;
+    min-width: 50vh;
+    padding: 0 1vh;
+    /*color: #bdbdbd;*/
+    text-transform: uppercase;
+    font-family: "Segoe UI";
+}
+
+ul{
+    list-style: none;
+    margin: 0.1em 0;
+    padding: 0;
+}
+
+li{
+    padding-block-start: 0.2em;
+    padding-block-end: 0.2em;
+    padding-left: 0.6em;
+}
+
+li:hover{
+    cursor: pointer;
+    /*color: white;*/
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+@keyframes fade-in{
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.menuItems{
+    display: none;
+    animation-duration: 1.5s;
+    animation-fill-mode: both;
+    animation-name: fade-in;
+}
+
+#mainItems{
+    display: inherit;
+}

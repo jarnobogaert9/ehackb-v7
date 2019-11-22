@@ -1,0 +1,83 @@
+a *{
+    text-decoration: none;
+    color: #212529;
+}
+
+a:hover{
+    text-decoration: none;
+    color: inherit;
+}
+
+.btnBar{
+    background-color: #f8fafc;
+    padding: 0.2em;
+}
+
+.btn{
+    padding: 0.25em 0.5em;
+    transition: all 0.3s ease 0s;
+}
+
+.outlineBtn{
+    border: 2px solid #5098c7;
+    color: #5098c7;
+}
+
+.outlineBtn:hover{
+    border: 2px solid #284c63;
+    border-radius: 1em;
+    color: #284c63;
+}
+
+.inlineBtn{
+    background-color: #c7505c;
+    color: white;
+}
+
+.inlineBtn:hover{
+    background-color: #c03d4b;
+    color: white;
+}
+
+/*
+USER PROFILE
+*/
+.profilePane{
+    background-color: white;
+    padding: 1em;
+    margin: 1em 0;
+}
+
+.userProfile p{
+    margin: 0;
+}
+
+.profilePane .row{
+    margin: 0;
+}
+
+/*
+TALKS
+*/
+.row img{
+    width: 100%;
+}
+
+.col-md-4:hover{
+    text-decoration: none;
+}
+
+/*
+SPONSORS
+*/
+.tier1{
+
+}
+
+.tier2{
+
+}
+
+.tier3{
+
+}
