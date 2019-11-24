@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Talk;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TalkController extends Controller
 {
@@ -63,6 +64,16 @@ class TalkController extends Controller
     public function show(Talk $talk)
     {
         return view('talks.detail', ['talk' => $talk]);
+    }
+
+    public function user_add(Talk $talk){
+        Auth::user()->subscribed_talks()->attach($talk);
+        return redirect(route('talks.index'));
+    }
+
+    public function user_remove(Talk $talk){
+        Auth::user()->subscribed_talks()->detach($talk);
+        return redirect(route('talks.index'));
     }
 
     /**

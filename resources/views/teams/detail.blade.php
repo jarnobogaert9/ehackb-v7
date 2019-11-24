@@ -12,13 +12,12 @@
             @endforeach
         </ul>
 
-        <!--TODO: In controller ook checken!!-->
         @if(Auth::user()->id == $team->creator->id)
             <form action="{{ route('teams.delete', $team->id) }}" method="post">
                 @csrf
                 @method('DELETE')
 
-                <input type="submit" value="Delete talk"/>
+                <input type="submit" value="Delete Your Team" class="btn inlineBtn"/>
             </form>
         @endif
     </div>

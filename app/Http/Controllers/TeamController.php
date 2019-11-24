@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Game;
 use App\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,7 +31,7 @@ class TeamController extends Controller
      */
     public function create()
     {
-        return (Auth::user()->is_admin) ? view('teams.create') : redirect(route('teams.index'));
+        return view('teams.create', ['games' => Game::all()]);
     }
 
     /**
@@ -41,7 +42,18 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:191',
+            'game_id' => 'required|exists:games,id'
+        ]);
+
+        $team = new Team();
+        $team->name = request('name');
+        $team->user_id = Auth::user()->id;
+        $team->game_id = request('game_id');
+        $team->save();
+
+        return redirect($team->path());
     }
 
     /**
@@ -63,7 +75,7 @@ class TeamController extends Controller
      */
     public function edit(Team $team)
     {
-        return (Auth::user()->is_admin) ? view('teams.edit') : redirect(route('teams.index'));
+        return view('teams.edit');
     }
 
     /**
@@ -86,6 +98,7 @@ class TeamController extends Controller
      */
     public function destroy(Team $team)
     {
-        //
+        $team->delete();
+        return redirect(route('users.ownProfile'));
     }
 }

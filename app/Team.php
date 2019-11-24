@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Team extends Model
 {
+    public function path(){
+        return route('teams.one', $this);
+    }
+
     public function creator(){
         return $this->belongsTo(User::class, 'user_id');
     }
