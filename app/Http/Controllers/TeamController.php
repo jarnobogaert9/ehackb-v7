@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Team;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TeamController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        //
+        return view('teams.index', ['teams' => Team::all()]);
     }
 
     /**
@@ -24,7 +30,7 @@ class TeamController extends Controller
      */
     public function create()
     {
-        //
+        return (Auth::user()->is_admin) ? view('teams.create') : redirect(route('teams.index'));
     }
 
     /**
@@ -46,7 +52,7 @@ class TeamController extends Controller
      */
     public function show(Team $team)
     {
-        //
+        return view('teams.detail', ['team' => $team]);
     }
 
     /**
@@ -57,7 +63,7 @@ class TeamController extends Controller
      */
     public function edit(Team $team)
     {
-        //
+        return (Auth::user()->is_admin) ? view('teams.edit') : redirect(route('teams.index'));
     }
 
     /**

@@ -19,6 +19,9 @@ Auth::routes();
 
 Route::get('/about', function (){return view('about');})->name('about');
 
+//TODO: Middelware voor admin check
+Route::get('/admin', function (){return view('admin.index');})->name('adminpanel')->middleware('auth');
+
 Route::get('/profile', 'UserController@show')->name('users.profile_no_id');
 Route::get('/profile/{user}', 'UserController@show')->name('users.profile');
 
@@ -29,6 +32,14 @@ Route::get('/games/{game}', 'GameController@show')->name('games.one');
 Route::get('/games/{game}/edit', 'GameController@edit')->name('games.edit');
 Route::put('/games/{game}', 'GameController@update')->name('games.update');
 Route::delete('/games/{game}', 'GameController@destroy')->name('games.delete');
+
+Route::get('/teams', 'TeamController@index')->name('teams.index');
+Route::post('/teams', 'TeamController@store')->name('teams.store');
+Route::get('/teams/create', 'TeamController@create')->name('teams.create');
+Route::get('/teams/{team}', 'TeamController@show')->name('teams.one');
+Route::get('/teams/{team}/edit', 'TeamController@edit')->name('teams.edit');
+Route::put('/teams/{team}', 'TeamController@update')->name('teams.update');
+Route::delete('/teams/{team}', 'TeamController@destroy')->name('teams.delete');
 
 Route::get('/talks', 'TalkController@index')->name('talks.index');
 Route::post('/talks', 'TalkController@store')->name('talks.store');

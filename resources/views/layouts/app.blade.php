@@ -38,7 +38,7 @@
                         </li>
                         @auth
                             <li class="nav-item {{ Request::is('teams*') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ route('talks.index') }}">Teams</a>
+                                <a class="nav-link" href="{{ route('teams.index') }}">Teams</a>
                             </li>
                         @endauth
                         <li class="nav-item {{ Request::is('talks*') ? 'active' : '' }}">
@@ -72,7 +72,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('users.profile', Auth::user()->id) }}">{{ __('Profile') }}</a>
                                     @if(Auth::user()->is_admin)
-                                        <a class="dropdown-item" href="">{{ __('Adminpanel') }}</a>
+                                        <a class="dropdown-item" href="{{ route('adminpanel') }}">{{ __('Adminpanel') }}</a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
