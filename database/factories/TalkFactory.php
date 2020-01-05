@@ -6,6 +6,7 @@ use App\Talk;
 use Faker\Generator as Faker;
 
 $factory->define(Talk::class, function (Faker $faker) {
+    $maxPlaces = $faker->numberBetween(50, 60);
     return [
         'title' => $faker->userName,
         'speaker' => $faker->name,
@@ -14,7 +15,7 @@ $factory->define(Talk::class, function (Faker $faker) {
         'body' => $faker->paragraph,
         'start_time' => $faker->time,
         'end_time' => $faker->time,
-        'max_places' => $faker->numberBetween(50, 60),
-        'available_places' => $faker->numberBetween(30, 50),
+        'max_places' => $maxPlaces,
+        'available_places' => $maxPlaces,
     ];
 });

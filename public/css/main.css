@@ -1,3 +1,15 @@
+/*
+COMMON
+ */
+i{
+    vertical-align: middle;
+    margin-right: 0.1em;
+    cursor: pointer;
+}
+
+/*
+buttons & links
+ */
 a *{
     text-decoration: none;
     color: #212529;
@@ -39,6 +51,53 @@ a:hover{
     color: white;
 }
 
+.bg-warning{
+    background-color: #ffe817;
+}
+
+/*
+forms
+ */
+.starIcon{
+    width: 1rem;
+}
+
+ul.form-control{
+    height: inherit;
+    list-style: none;
+}
+
+ul.form-control li{
+    display: flex;
+}
+
+/*
+CARDS
+ */
+.card-deck{
+    margin-bottom: 1.5rem;
+}
+
+/*
+NAVBAR
+ */
+.admin-items .dropdown-item{
+    font-size: 0.8rem;
+}
+
+.dropdown-item form{
+    display: inline-block;
+}
+
+
+
+#spaceShuttle{
+    bottom: 0;
+}
+
+
+
+
 /*
 USER PROFILE
 */
@@ -48,12 +107,44 @@ USER PROFILE
     margin: 1em 0;
 }
 
-.userProfile p{
-    margin: 0;
+.profilePane h4, .profilePane h5{
+    margin-bottom: 0;
+}
+
+hr.mb-4{
+    margin-top: 0.5rem;
+}
+
+.profileCard > .card-img-top{
+    display: flex;
+    width: 95%;
+    margin: -1rem auto;
+    background-color: #fcfdfe;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    border-bottom-left-radius: unset;
+    border-bottom-right-radius: unset;
+    box-shadow: 0px 5px 10px -1px #ababab;
+}
+
+.profileCard > .card-img-top > .card-img-top{
+    width: 90%;
+    margin: 0.5rem auto 0;
 }
 
 .profilePane .row{
     margin: 0;
+}
+
+/*
+TEAMS
+ */
+.noBtnStyling{
+    border: none;
+    background-color: inherit;
+    color: inherit;
+    height: 100%;
+    vertical-align: middle;
 }
 
 /*
@@ -80,4 +171,21 @@ SPONSORS
 
 .tier3{
 
+}
+
+/*
+ADMIN
+ */
+.adminTable{
+    width: 100%;
+}
+
+.deleteForm{
+    display: inline-block;
+}
+
+.deleteForm button{
+    border: inherit;
+    background-color: inherit;
+    padding: inherit;
 }

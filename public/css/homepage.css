@@ -1,52 +1,195 @@
-.mainMenu{
-    position: absolute;
-    bottom: 2.5vw;
-    display: inline-block;
-    min-width: 50vh;
-    padding: 0 1vh;
-    /*color: #bdbdbd;*/
-    text-transform: uppercase;
-    font-family: "Segoe UI";
+body{
+    overflow-x: hidden;
 }
 
-ul{
-    list-style: none;
-    margin: 0.1em 0;
+.navbar{
+    background-color: transparent !important;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+}
+
+.navbar-brand, .nav-link{
+    color: white !important;
+}
+
+section{
+    display: table;
+    width: 100vw;
+    height: 100vh;
+    color: white;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+#titleSection{
+    background-image: url('../imgs/indexbg1.jpg');
+}
+
+#gameSection{
+    background-image: url('../imgs/indexbg2.jpg');
+}
+
+#talkSection{
+    background-image: url('../imgs/indexbg1.jpg');
+}
+
+#locationSection{
+    background-image: url('../imgs/indexbg3.jpg');
+}
+
+#sponsorSection{
+    background-image: url('../imgs/indexbg4.jpg');
+}
+
+.displayTable{
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+.centerVertical{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+h1{
+    font-size: 3.75rem;
+    font-family: Arial;
+}
+
+i{
+    vertical-align: middle;
+}
+
+p{
+    font-size: 1.1rem;
+}
+
+.btn{
+    border-radius: 0;
+    font-size: 1.1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.btn-danger{
+    background-color: #4D346B;
+    border-color: #4D346B;
+}
+
+.btn-danger:hover, .btn-danger:active{
+    background-color: #412c5a !important;
+    border-color: #412c5a !important;
+}
+
+.btn-danger:active, .btn-danger:focus{
+    box-shadow: 0 0 0 0.2rem rgba(65, 44, 90, 0.5) !important;
+}
+
+/*
+COMPETITIONS
+ */
+.owl-carousel{
+    z-index: 0;
+}
+
+.owl-carousel .col-md-4{
     padding: 0;
 }
 
-li{
-    padding-block-start: 0.2em;
-    padding-block-end: 0.2em;
-    padding-left: 0.6em;
+.owl-carousel button.owl-dot{
+    margin-right: 0.4rem;
+    border: 1px solid #6b6b6b;
+    border-radius: 1rem;
 }
 
-li:hover{
-    cursor: pointer;
-    /*color: white;*/
+.owl-carousel button.owl-dot.active, .owl-carousel button.owl-dot:hover{
+    border-color: #f8f9fa;
 }
 
-a{
-    text-decoration: none;
-    color: inherit;
+.owl-carousel button.owl-dot:focus{
+    outline: none;
 }
 
-@keyframes fade-in{
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+.owl-theme .owl-dots .owl-dot span{
+    margin: 5px;
+    background: #6b6b6b;
 }
 
-.menuItems{
-    display: none;
-    animation-duration: 1.5s;
-    animation-fill-mode: both;
-    animation-name: fade-in;
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span{
+    background: white;
 }
 
-#mainItems{
+/*
+TALKS
+ */
+#talkSection > .row{
+    height: inherit;
+}
+
+#talkSection .container{
+    margin: 0 10%;
+    width: 80%;
+}
+
+#talkSection .halfPane{
+    background-color: #4D346B;
+}
+
+.halfPane img{
+    width: 40%;
     display: inherit;
+    margin: 0 auto;
+}
+
+/*
+LOCATION
+ */
+iframe{
+    width: 100%;
+    height: 75vh;
+    border: none;
+}
+
+iframe .i4ewOd-pzNkMb-haAclf {
+    background-color: #02B9B5;
+    color: white!important;
+}
+
+/*
+SPONSORS
+ */
+.col-md-4 img, .col-md-3 img, .col-md-2 img{
+    width: 100%;
+}
+
+/*
+NAVIGATOR ARROW
+ */
+.nextStepDiv{
+    position: fixed;
+    bottom: 5vh;
+    width: 100%;
+}
+
+.nextStepDiv .container{
+    position: relative;
+}
+
+#nextStep{
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0.165rem 0.35rem;
+    z-index: 99;
+}
+
+#nextStep:hover{
+    color: white;
+    box-shadow: none;
+}
+
+#nextStep:focus{
+    box-shadow: none;
 }

@@ -20,5 +20,13 @@ class UsersTableSeeder extends Seeder
             $user->subscribed_talks()->attach([5, 6, 7]);
             $user->teams()->attach([3, 4]);
         });
+
+        factory(App\User::class)->create([
+            'username' => 'gebruiker',
+            'first_name' => 'Test',
+            'last_name' => 'Gebruiker',
+            'email' => 'test@student.ehb.be',
+            'password' => Hash::make('123456')
+        ]);
     }
 }

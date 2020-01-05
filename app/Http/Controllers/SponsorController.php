@@ -4,9 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Sponsor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class SponsorController extends Controller
 {
+    function removeImage($fileName){
+        $path = public_path('imgs'.DIRECTORY_SEPARATOR.'sponsors'.DIRECTORY_SEPARATOR.$fileName);
+        if (file_exists($path)) {
+            File::delete($path);
+        }
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +23,11 @@ class SponsorController extends Controller
     public function index()
     {
         return view('sponsors.index', ['sponsors' => Sponsor::all()->sortBy('tier')]);
+    }
+
+    public function admin_index()
+    {
+        return view('admin.sponsors', ['sponsors' => Sponsor::all()->sortBy('tier')]);
     }
 
     /**
@@ -35,14 +48,22 @@ class SponsorController extends Controller
      */
     public function store(Request $request)
     {
-        Sponsor::create($request->validate([
+        $validatedAttr = $request->validate([
             'name' => 'required|max:191',
             'tier' => 'required',
-            'logo' => 'required',
+            'logo' => 'required|mimes:jpg,jpeg,png|max:10000',
             'url' => 'required|max:191'
-        ]));
+        ]);
 
-        return redirect(route('sponsors.index'));
+        if ($request->file('logo')->isValid()){
+            $fileName = time().".".$request->logo->extension();
+            $request->logo->move(public_path('imgs/sponsors'), $fileName);
+
+            $validatedAttr['logo'] = $fileName;
+        }
+
+        $sponsor = Sponsor::create($validatedAttr);
+        return redirect(route('adminpanel.sponsors'));
     }
 
     /**
@@ -65,14 +86,25 @@ class SponsorController extends Controller
      */
     public function update(Request $request, Sponsor $sponsor)
     {
-        $sponsor->update($request->validate([
+        $validatedAttr = $request->validate([
             'name' => 'required|max:191',
             'tier' => 'required',
-            'logo' => 'required',
             'url' => 'required|max:191'
-        ]));
+        ]);
 
-        return redirect(route('sponsors.index'));
+        if ($request->hasFile('logo') && $request->file('logo')->isValid()){
+            $request->validate(['logo' => 'mimes:jpg,jpeg,png|max:10000']);
+
+            $this->removeImage($sponsor->logo);
+
+            $fileName = time().".".$request->logo->extension();
+            $request->logo->move(public_path('imgs/sponsors'), $fileName);
+
+            $validatedAttr['logo'] = $fileName;
+        }
+
+        $sponsor->update($validatedAttr);
+        return redirect(route('adminpanel.sponsors'));
     }
 
     /**
@@ -83,7 +115,8 @@ class SponsorController extends Controller
      */
     public function destroy(Sponsor $sponsor)
     {
+        $this->removeImage($sponsor->logo);
         $sponsor->delete();
-        return redirect(route('sponsors.index'));
+        return redirect(route('adminpanel.sponsors'));
     }
 }

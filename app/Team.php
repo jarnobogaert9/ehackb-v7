@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Team extends Model
 {
+    protected $fillable = ['name', 'game_id'];
+
     public function path(){
         return route('teams.one', $this);
     }

@@ -11,6 +11,6 @@ class GamesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Game::class, 4)->create();
+        factory(App\Game::class, 9)->create();
     }
 }

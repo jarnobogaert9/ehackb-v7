@@ -1,17 +1,22 @@
 <div class="talks">
-    <div class="row">
-    @foreach($talks as $index => $talk)
-        @if($index-1 % 3 == 0 && $index-1 != 0)
-            </div>
-            <div class="row">
-        @endif
-        <a class="col-md-4" href="{{ route('talks.one', $talk->id) }}">
-            <img src="{{ asset('imgs/talks/'.$talk->photo) }}" alt="" title="{{ $talk->title }}"/>
-            <h3>{{ $talk->title }}</h3>
-            <p>{{ $talk->available_places }}/{{ $talk->max_places }} places available</p>
-            <p>{{ $talk->excerpt }}</p>
-            <p>{{ \Carbon\Carbon::createFromFormat('H:i:s', $talk->start_time)->format('H:i') }} - {{ Carbon\Carbon::createFromFormat('H:i:s', $talk->end_time)->format('H:i') }} | {{ $talk->speaker }}</p>
-        </a>
+    @foreach($talks->chunk(3) as $row)
+        <div class="card-deck">
+            @foreach($row as $index => $talk)
+                <a class="card" href="{{ route('talks.one', $talk->id) }}">
+                    <img src="{{ asset('imgs/talks/'.$talk->photo) }}" class="card-img-top" alt="" title="{{ $talk->title }}"/>
+                    <div class="card-body">
+                        <h3 class="card-title">{{ $talk->title }}</h3>
+                        <p class="card-text">{{ $talk->excerpt }}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">{{ \Carbon\Carbon::createFromFormat('H:i:s', $talk->start_time)->format('H:i') }} - {{ Carbon\Carbon::createFromFormat('H:i:s', $talk->end_time)->format('H:i') }} | {{ $talk->speaker }}</li>
+                        <li class="list-group-item text-white bg-success">{{ $talk->available_places }}/{{ $talk->max_places }} places available</li>
+                    </ul>
+                </a>
+            @endforeach
+            @for($index = $row->count() % 3; $index % 3 !== 0; $index++)
+                <div class="card bg-transparent border-0"></div>
+            @endfor
+        </div>
     @endforeach
-    </div>
 </div>

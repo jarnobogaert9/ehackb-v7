@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -19,7 +20,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.users', ['users' => User::all()]);
     }
 
     /**
@@ -54,9 +55,7 @@ class UserController extends Controller
         if ($user->exists){
             return view('users.profile', ['user' => $user]);
         }
-        else{
-            return redirect(route('users.profile', \Auth::user()->id));
-        }
+        return view('users.profile', ['user' => Auth::user()]);
     }
 
     /**
@@ -82,6 +81,13 @@ class UserController extends Controller
         //
     }
 
+    public function toggleAdmin(User $user)
+    {
+        $user->is_admin = ($user->is_admin + 1) % 2;
+        $user->save();
+        return redirect(route('adminpanel.users'));
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -90,6 +96,11 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        if ($user->id === Auth::user()->id) {
+            Auth::logout();
+            return redirect(route('home'));
+        }
+        return redirect(route('adminpanel.users'));
     }
 }

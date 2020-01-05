@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Game;
 use App\Team;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,6 +23,11 @@ class TeamController extends Controller
     public function index()
     {
         return view('teams.index', ['teams' => Team::all()]);
+    }
+
+    public function admin_index()
+    {
+        return view('admin.teams', ['teams' => Team::all()]);
     }
 
     /**
@@ -75,7 +81,7 @@ class TeamController extends Controller
      */
     public function edit(Team $team)
     {
-        return view('teams.edit');
+        return view('teams.edit', ['team' => $team, 'games' => Game::all()]);
     }
 
     /**
@@ -87,7 +93,13 @@ class TeamController extends Controller
      */
     public function update(Request $request, Team $team)
     {
-        //
+        $validatedAttr = $request->validate([
+            'name' => 'required|max:191',
+            'game_id' => 'required|exists:games,id'
+        ]);
+
+        $team->update($validatedAttr);
+        return redirect($team->path());
     }
 
     /**
@@ -99,6 +111,13 @@ class TeamController extends Controller
     public function destroy(Team $team)
     {
         $team->delete();
-        return redirect(route('users.ownProfile'));
+        return (Auth::user()->is_admin && $team->creator->id !== Auth::user()->id) ? redirect(route('adminpanel.teams')) : redirect(route('users.ownProfile'));
+    }
+
+    public function remove_user(Team $team, User $user)
+    {
+        $team->members()->detach($user);
+        $team->requests->where('user_id', $user->id)->first()->delete();
+        return ($team->creator->id === Auth::user()->id) ? redirect(route('teams.edit', $team->id)) : redirect(route('adminpanel.teams'));
     }
 }

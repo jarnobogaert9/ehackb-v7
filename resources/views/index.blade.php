@@ -1,42 +1,115 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>EhackB v7</title>
+@extends('layouts.app')
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="css/homepage.css">
-    </head>
-    <body>
-        <div class="mainMenu">
-            <ul class="menuItems" id="mainItems">
-                <li class="playButton">Play</li>
-                <li><a href="{{ route('games.index') }}">Competitions</a></li>
-                <li><a href="{{ route('talks.index') }}">Talks</a></li>
-                <li><a href="">Location</a></li>
-                <li><a href="{{ route('sponsors.index') }}">Sponsors</a></li>
-                <li><a href="{{ route('about') }}">Credits</a></li>
-                <li><a href="https://www.google.be">Save & Exit</a></li>
-            </ul>
-            <ul class="menuItems" id="playItems">
-                <li><a href="{{ route('login') }}">Continue</a></li>
-                <li id="newGameButton">New Game</li>
-                <li class="mainMenuButton">Back</li>
-            </ul>
-            <ul class="menuItems" id="newGameItems">
-                <li><a href="{{ route('register') }}">1 player</a></li>
-                <li><a href="">2 players</a></li>
-                <li><a href="">3 players</a></li>
-                <li><a href="">4 players</a></li>
-                <li><a href="">5 players</a></li>
-                <li><a href="">more players</a></li>
-                <li class="playButton">Back</li>
-            </ul>
+@section('content')
+<section id="titleSection">
+    <div class="centerVertical">
+        <div class="container">
+            <h1>Prepare for EhackBv7</h1>
+            @auth
+                <a href="{{ route('users.ownProfile') }}" class="btn btn-danger mr-2">View profile</a>
+            @else
+                <a href="{{ route('register') }}" class="btn btn-danger mr-2">Sign Up</a>
+            @endauth
+            <button class="btn btn-outline-light" id="learnMore">Learn more</button>
         </div>
+    </div>
+</section>
+<section id="gameSection">
+    <div class="centerVertical">
+        <div class="container">
+            <h1>Competitions</h1>
+            <div class="owl-carousel owl-theme">
+                <div class="item">
+                    @foreach(\App\Game::all() as $index => $game)
+                        @if($index % 2 == 0 && $index != 0)
+                            </div>
+                            <div class="item">
+                        @endif
 
-        <script src="js/homepage.js"></script>
-    </body>
-</html>
+                            <a href="#" class="col-md-4">
+                                <img src="{{ asset('imgs/games/'.$game->thumbnail) }}" alt=""/>
+                            </a>
+
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="talkSection">
+    <div class="row">
+        <div class="col-md-6 displayTable">
+            <div class="centerVertical">
+                <div class="container">
+                    <div class="row">
+                        <h1>Talks</h1>
+                    </div>
+                    <div class="row">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                            nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                            culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <a href="{{ route('talks.index') }}" class="btn btn-danger">Discover Talks<i class="material-icons">chevron_right</i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 halfPane">
+            <div class="displayTable">
+                <div class="centerVertical">
+                    <img src="{{ asset('imgs/talks_icon.png') }}" alt=""/>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="locationSection">
+    <div class="centerVertical">
+        <div class="container">
+            <h1>Location</h1>
+            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1Q2BbUUQ6uKPsDSmi_VT4pEIZjBM4Wo2U"></iframe>
+        </div>
+    </div>
+</section>
+<section id="sponsorSection">
+    <div class="centerVertical">
+        <div class="container">
+            <h1>Sponsors</h1>
+            <div class="row">
+                <?php
+                $sponsors = App\Sponsor::all()->sortBy('tier');
+                $prevTier = $sponsors->first()->tier;
+                ?>
+                @foreach($sponsors as $index => $sponsor)
+                    @if($index-1 % (2 + $sponsor->tier) == 0 && $index-1 != 0 || $sponsor->tier != $prevTier)
+                        <?php $prevTier = $sponsor->tier ?>
+                        </div>
+                        <div class="row">
+                    @endif
+                    <a href="{{ $sponsor->url }}" class="col-md-{{ 5-$sponsor->tier }}">
+                        <div class="displayTable">
+                            <div class="centerVertical">
+                                <img src="{{ asset('imgs/sponsors/'.$sponsor->logo) }}" alt="" title="{{ $sponsor->name }}"/>
+                            </div>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="nextStepDiv">
+    <div class="container">
+        <div class="row">
+            <button class="btn btn-outline-light ml-auto" id="nextStep">
+                <i class="material-icons">expand_more</i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="{{ asset('js/homepage.js') }}"></script>
+@endsection
