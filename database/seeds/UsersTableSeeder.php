@@ -28,5 +28,13 @@ class UsersTableSeeder extends Seeder
             'email' => 'test@student.ehb.be',
             'password' => Hash::make('123456')
         ]);
+
+        factory(App\User::class)->create([
+            'username' => 'admin',
+            'first_name' => 'Test',
+            'last_name' => 'Admin',
+            'email' => 'test.admin@student.ehb.be',
+            'password' => Hash::make('Azerty123')
+        ]);
     }
 }
