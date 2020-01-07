@@ -30,7 +30,7 @@ $(function(){
         }, 750).promise().then(function() {
             lastScroll = Math.round($(`#${sections[current]}`).offset().top * 100) / 100;
             setTimeout(function () {
-                window.location.href = `http://127.0.0.1:8000#${sections[current]}`;
+                window.location.href = `${window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1)}#${sections[current]}`;
                 active = true;
             }, 100);
         });
