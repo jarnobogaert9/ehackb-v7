@@ -17,8 +17,6 @@ Route::get('/', function () {
 
 Route::get('/about', function () {return view('about');})->name('about');
 
-//TODO: About pagina
-
 Auth::routes();
 
 //Route::get('/about', function (){return view('about');})->name('about');
@@ -93,3 +91,14 @@ Route::get('/sponsors/create', 'SponsorController@create')->name('sponsors.creat
 Route::get('/sponsors/{sponsor}/edit', 'SponsorController@edit')->name('sponsors.edit')->middleware('admin');
 Route::put('/sponsors/{sponsor}', 'SponsorController@update')->name('sponsors.update')->middleware('admin');
 Route::delete('/sponsors/{sponsor}', 'SponsorController@destroy')->name('sponsors.delete')->middleware('admin');
+
+/*
+ * Seats
+ */
+Route::get('/seatmap/team/{team}', 'SeatController@index')->name('seatmap');
+//Route::get('/games', 'GameController@index')->name('games.index');
+//Route::post('/games', 'GameController@store')->name('games.store')->middleware('admin');
+//Route::get('/games/create', 'GameController@create')->name('games.create')->middleware('admin');
+//Route::get('/games/{game}/edit', 'GameController@edit')->name('games.edit')->middleware('admin');
+Route::put('/seatmap/{team}', 'SeatController@claim_seats')->name('seats.claim');
+//Route::delete('/games/{game}', 'GameController@destroy')->name('games.delete')->middleware('admin');
