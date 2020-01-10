@@ -90,7 +90,7 @@
         'use strict';
         let maxSeats = {{ $team->members->count() + 1 }};
         let currSeats = {{ ($team->members->count() + 1) - $team->seats->count() }};
-        <?php $test = App\Seat::where('team_id', '!=', 0)->where('team_id', '!=', $team->id)->get()->pluck('id'); ?>
+        <?php $test = App\Seat::where('team_id', '!=', null)->where('team_id', '!=', $team->id)->get()->pluck('id'); ?>
         let occupied = @json($test);
         let owned = @json(App\Seat::where('team_id', $team->id)->get()->pluck('id'));
 

@@ -85,7 +85,7 @@ class SeatController extends Controller
         ]);
 
         foreach ($team->seats as $seat){
-            $seat->team_id = 0;
+            $seat->team_id = null;
             $seat->save();
         }
 
@@ -94,10 +94,9 @@ class SeatController extends Controller
         }
 
         foreach ($data['selectedSeats'] as $selectedSeat) {
-            $seat = Seat::where('id', $selectedSeat)->first();
-            if ($seat->team_id === 0){
-                $seat->team_id = $team->id;
-                $seat->save();
+            $seat = Seat::find($selectedSeat);
+            if ($seat->team_id === null){
+                $seat->team()->associate($team)->save();
             }
         }
 

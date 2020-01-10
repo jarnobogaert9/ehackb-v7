@@ -59,7 +59,7 @@ Route::get('/teams/create', 'TeamController@create')->name('teams.create');
 Route::get('/teams/{team}', 'TeamController@show')->name('teams.one');
 Route::get('/teams/{team}/edit', 'TeamController@edit')->name('teams.edit')->middleware('teamleader');
 Route::put('/teams/{team}', 'TeamController@update')->name('teams.update')->middleware('teamleader');
-Route::delete('/teams/{team}/{user}', 'TeamController@remove_user')->name('teams.removeUser')->middleware('teamleader');
+Route::delete('/teams/{team}/{user}', 'TeamController@remove_user')->name('teams.removeUser')->middleware('teammember');
 Route::delete('/teams/{team}', 'TeamController@destroy')->name('teams.delete')->middleware('teamleader');
 
 /*

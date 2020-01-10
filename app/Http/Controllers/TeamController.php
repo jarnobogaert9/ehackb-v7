@@ -118,6 +118,13 @@ class TeamController extends Controller
     {
         $team->members()->detach($user);
         $team->requests->where('user_id', $user->id)->first()->delete();
-        return ($team->creator->id === Auth::user()->id) ? redirect(route('teams.edit', $team->id)) : redirect(route('adminpanel.teams'));
+        ($team->members->count() + 1 < $team->seats->count() && $team->seats->last()->team()->dissociate()->save());
+        if ($team->creator->id === Auth::user()->id || $user->id === Auth::user()->id) {
+            return redirect(route('teams.edit', $team->id));
+        }
+        else if(Auth::user()->is_admin) {
+            redirect(route('adminpanel.teams'));
+        }
+        return redirect(route('teams.edit', $team->id));
     }
 }
