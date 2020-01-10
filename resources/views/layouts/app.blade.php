@@ -52,6 +52,11 @@
                             <li class="nav-item {{ Request::is('talks*') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ route('talks.index') }}">Talks</a>
                             </li>
+                            @auth
+                                <li class="nav-item {{ Request::is('seatmap*') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('seatmap') }}">Seat Map</a>
+                                </li>
+                            @endauth
                             <li class="nav-item {{ Request::is('about*') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ route('about') }}">About</a>
                             </li>

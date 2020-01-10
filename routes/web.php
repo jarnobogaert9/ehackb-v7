@@ -95,10 +95,11 @@ Route::delete('/sponsors/{sponsor}', 'SponsorController@destroy')->name('sponsor
 /*
  * Seats
  */
-Route::get('/seatmap/team/{team}', 'SeatController@index')->name('seatmap');
+Route::get('/seatmap/', 'SeatController@index')->name('seatmap');
+Route::get('/seatmap/team/{team}', 'SeatController@edit')->name('seatmap.select')->middleware('teamleader');
 //Route::get('/games', 'GameController@index')->name('games.index');
 //Route::post('/games', 'GameController@store')->name('games.store')->middleware('admin');
 //Route::get('/games/create', 'GameController@create')->name('games.create')->middleware('admin');
 //Route::get('/games/{game}/edit', 'GameController@edit')->name('games.edit')->middleware('admin');
-Route::put('/seatmap/{team}', 'SeatController@claim_seats')->name('seats.claim');
+Route::put('/seatmap/{team}', 'SeatController@claim_seats')->name('seats.claim')->middleware('teamleader');
 //Route::delete('/games/{game}', 'GameController@destroy')->name('games.delete')->middleware('admin');

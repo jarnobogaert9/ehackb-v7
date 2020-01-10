@@ -10,7 +10,7 @@ class SeatController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('teamleader');
+        $this->middleware('auth');
     }
 
     /**
@@ -18,9 +18,9 @@ class SeatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Team $team)
+    public function index()
     {
-        return view('seatmap', ['team' => $team]);
+        return view('seats.index');
     }
 
     /**
@@ -58,12 +58,12 @@ class SeatController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Seat  $seat
+     * @param  \App\Team $team
      * @return \Illuminate\Http\Response
      */
-    public function edit(Seat $seat)
+    public function edit(Team $team)
     {
-        //
+        return view('seats.edit', ['team' => $team]);
     }
 
     /**
@@ -90,7 +90,7 @@ class SeatController extends Controller
         }
 
         if (!isset($data['selectedSeats']) || count($data['selectedSeats']) > $team->members->count() + 1){
-            return redirect(route('seatmap', $team->id));
+            return redirect(route('seatmap.select', $team->id));
         }
 
         foreach ($data['selectedSeats'] as $selectedSeat) {
@@ -100,7 +100,7 @@ class SeatController extends Controller
             }
         }
 
-        return redirect(route('seatmap', $team->id));
+        return redirect(route('seatmap.select', $team->id));
     }
 
     /**

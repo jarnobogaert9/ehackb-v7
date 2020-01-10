@@ -189,3 +189,67 @@ ADMIN
     background-color: inherit;
     padding: inherit;
 }
+
+/*
+SEATMAP
+ */
+#currSeats{
+    text-align: right;
+    margin-right: 2.5%;
+}
+
+.table-row{
+    flex-wrap: nowrap;
+}
+
+.table-wrapper{
+    background-color: white;
+}
+
+.table-wrapper .row{
+    margin: 0;
+}
+
+.col-sm-6{
+    -webkit-box-flex: 0;
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.table-wrapper .row .col-sm-6{
+    padding: 0;
+}
+
+.seatmap-table{
+    border: 1px solid black;
+    height: 50px;
+    width: 100px;
+    margin: 0.25rem 0;
+}
+
+.seat{
+    display: table;
+    margin: 0 auto;
+    background-color: #02B9B5;
+    color: white;
+    border-radius: 0.5rem;
+    height: 2rem;
+    width: 2rem;
+    cursor: pointer;
+}
+
+.seat p{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    margin: 0;
+}
+
+.unavailable{
+    background-color: #F16EA4;
+    cursor: not-allowed;
+}
+
+.selected{
+    background-color: #F7B994;
+}
