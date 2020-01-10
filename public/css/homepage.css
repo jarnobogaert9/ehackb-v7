@@ -13,6 +13,14 @@ body{
     color: white !important;
 }
 
+.navbar-light .navbar-toggler {
+    border-color: white;
+}
+
+.navbar-light .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.75)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
 section{
     display: table;
     width: 100vw;
@@ -22,6 +30,10 @@ section{
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
+}
+
+.container{
+    width: 100vw;
 }
 
 #titleSection{
@@ -128,6 +140,7 @@ TALKS
  */
 #talkSection > .row{
     height: inherit;
+    margin: 0;
 }
 
 #talkSection .container{
