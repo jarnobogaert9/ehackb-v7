@@ -67,6 +67,10 @@ section{
     vertical-align: middle;
 }
 
+.halfPane{
+    display: none;
+}
+
 h1{
     font-size: 2.75rem;
     font-family: Arial;
@@ -161,6 +165,12 @@ TALKS
 
 #talkSection .halfPane{
     background-color: #4D346B;
+}
+
+@media (min-width: 768px){
+    .halfPane{
+        display: inherit;
+    }
 }
 
 .halfPane img{

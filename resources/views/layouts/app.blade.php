@@ -72,13 +72,14 @@
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @else
+                            <?php $requests = Auth::user()->created_teams()->with('requests')->get()->pluck('requests')->flatten()->where('accepted', 0); ?>
                             <li class="nav-item dropdown">
                                 <a id="notificationDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <i class="material-icons">notifications</i>
+                                    <i class="material-icons">@if($requests->count() !== 0){{ 'notifications' }}@else{{ 'notifications_none' }}@endif</i>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationDropdown">
-                                    <?php $requests = Auth::user()->created_teams()->with('requests')->get()->pluck('requests')->flatten()->where('accepted', 0); ?>
+
                                     @if($requests->count() !== 0)
                                     @foreach($requests as $request)
                                         <div class="dropdown-item">
