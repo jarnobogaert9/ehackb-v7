@@ -37,7 +37,7 @@ Route::get('/profile/{user}', 'UserController@show')->name('users.profile');
 /*
  * Users
  */
-Route::get('/users/{user}/toggleAdmin', 'UserController@toggleAdmin')->name('users.toggleAdmin')->middleware('admin');
+Route::get('/users/{user}/toggleAdmin', 'UserController@toggleAdmin')->name('users.toggleAdmin')->middleware('superadmin');
 Route::delete('/users/{user}', 'UserController@destroy')->name('users.delete')->middleware('ownUser');
 
 /*
