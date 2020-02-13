@@ -125,7 +125,7 @@
                                         @csrf
                                     </form>
 
-                                    @if(Auth::user()->is_admin)
+                                    @if(Auth::user()->role == 2)
                                         <div class="dropdown-divider"></div>
                                         <div class="admin-items">
                                             <a class="dropdown-item" href="{{ route('adminpanel.games') }}"><i class="material-icons">videogame_asset</i>{{ __('Competitions') }}</a>

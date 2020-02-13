@@ -52,7 +52,7 @@
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('Update') }}
                                     </button>
-                                    <a href=" @if(Auth::user()->is_admin) {{ route('adminpanel.teams') }} @else {{ route('teams.one', $team->id) }} @endif " class="btn outlineBtn">
+                                    <a href=" @if(Auth::user()->role == 2) {{ route('adminpanel.teams') }} @else {{ route('teams.one', $team->id) }} @endif " class="btn outlineBtn">
                                         {{ __('Back') }}
                                     </a>
                                 </div>

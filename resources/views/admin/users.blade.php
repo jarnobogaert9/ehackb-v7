@@ -19,14 +19,14 @@
                 <tbody>
                 @foreach($users as $user)
                     <tr>
-                        <td class="starIcon" title="admin">@if($user->is_admin)<i class="material-icons">star</i>@endif</td>
+                        <td class="starIcon" title="admin">@if($user->role == 2)<i class="material-icons">star</i>@endif</td>
                         <td>{{ $user->username }}</td>
                         <td>{{ $user->first_name }}</td>
                         <td>{{ $user->last_name }}</td>
 
                         <td>
                             @if($user->id !== Auth::user()->id)
-                                <a href="{{ route('users.toggleAdmin', $user->id) }}" title="@if($user->is_admin) Remove @else Set @endif admin"><i class="material-icons">star_half</i></a>
+                                <a href="{{ route('users.toggleAdmin', $user->id) }}" title="@if($user->role == 2) Remove @else Set @endif admin"><i class="material-icons">star_half</i></a>
                                 <form action="{{ route('users.delete', $user->id) }}" method="POST" class="deleteForm">
                                     @csrf
                                     @method('DELETE')

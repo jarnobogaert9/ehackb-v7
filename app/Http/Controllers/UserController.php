@@ -83,7 +83,12 @@ class UserController extends Controller
 
     public function toggleAdmin(User $user)
     {
-        $user->is_admin = ($user->is_admin + 1) % 2;
+        if ($user->role == 0){
+            $user->role = 2;
+        }
+        else if($user->role == 2){
+            $user->role = 0;
+        }
         $user->save();
         return redirect(route('adminpanel.users'));
     }
