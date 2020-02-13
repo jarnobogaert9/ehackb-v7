@@ -3,9 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Auth;
 
-class IsAdmin
+class IsCashier
 {
     /**
      * Handle an incoming request.
@@ -16,7 +15,8 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user() && Auth::user()->role == 2){
+        if (Auth::user() && Auth::user()->role == 1){
+            // If user is a cashier let them go to cashier specific pages
             return $next($request);
         }
         return redirect('login');
