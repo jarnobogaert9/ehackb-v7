@@ -9,11 +9,6 @@ use Illuminate\Http\Request;
 
 class KassaController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('admin');
-    }
-
     public function index()
     {
         return view('kassa.index');
@@ -34,13 +29,6 @@ class KassaController extends Controller
 
         $user->balance = $user->balance + $validatedAttributes['amount'];
         $user->save();
-
-        /*DB::table('kassa_logs')->insert([
-            'user_id' => $user->id,
-            'product_id' => 999999,
-            'amount' => $validatedAttributes['amount'],
-            'balance' => $user->balance
-        ]);*/
 
         $logData = [
             'user_id' => $user->id,

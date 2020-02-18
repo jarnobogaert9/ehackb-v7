@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class KassaLog extends Model
 {
-    protected $fillable = ['user_id', 'amount', 'balance'];
+    protected $fillable = ['user_id', 'product_id', 'amount', 'balance'];
 
     public function user()
     {

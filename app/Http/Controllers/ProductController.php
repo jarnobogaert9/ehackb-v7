@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -30,7 +31,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.products.create');
+        return view('products.create');
     }
 
     /**
@@ -41,7 +42,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedAttributes = request()->validate([
+        $validatedAttributes = $request->validate([
             'name' => 'required',
             'photo' => 'required|mimes:jpg,jpeg,png|max:10000',
             'price' => 'required',
@@ -49,7 +50,7 @@ class ProductController extends Controller
 
         if ($request->file('photo')->isValid())
         {
-            $fileName = rand(0, 1000)."_".$request->photo->getClientOriginalName();
+            $fileName = time().".".$request->photo->extension();
             $request->photo->move(public_path('imgs/products'), $fileName);
 
             $validatedAttributes['photo'] = $fileName;
@@ -65,7 +66,7 @@ class ProductController extends Controller
 
         $saved = true;
         return redirect()
-            ->route('admin.products')
+            ->route('adminpanel.products')
             ->with('saved', $saved);
     }
 
@@ -88,7 +89,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('admin.products.edit', ['product' => $product]);
+        return view('products.edit', ['product' => $product]);
     }
 
     /**
@@ -110,7 +111,7 @@ class ProductController extends Controller
         {
             if ($request->file('photo')->isValid())
             {
-                $fileName = rand(0, 1000)."_".$request->photo->getClientOriginalName();
+                $fileName = time().".".$request->photo->extension();
                 $request->photo->move(public_path('imgs/products'), $fileName);
 
                 $validatedAttributes['photo'] = $fileName;
@@ -135,7 +136,7 @@ class ProductController extends Controller
         $product->update($validatedAttributes);
         $updated = true;
         return redirect()
-            ->route('admin.products')
+            ->route('adminpanel.products')
             ->with('updated', $updated);
     }
 
@@ -150,7 +151,7 @@ class ProductController extends Controller
         $product->delete();
         $deleted = true;
         return redirect()
-            ->route('admin.products')
+            ->route('adminpanel.products')
             ->with('deleted', $deleted);
     }
 }

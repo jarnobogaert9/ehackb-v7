@@ -1,7 +1,7 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
-@section('settingsContent')
-
+@section('content')
+<div class="container">
     <form method="POST" action="{{route('products.update', $product->id)}}" class="settingsForm" enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -55,5 +55,6 @@
         </div>
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
+</div>
 @endsection
 

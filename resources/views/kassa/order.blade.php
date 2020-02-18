@@ -20,12 +20,12 @@
                 <div class="product-tile">
                     <div class="row">
                         <div class="col-4">
-                            <img src="{{ asset('imgs/products/'.$product->photo)}}" alt="" class="productImg">
+                            <img src="{{ asset('imgs/products/'.$product->photo) }}" alt="" class="productImg">
                         </div>
                         <div class="col-8">
                             <h1>{{ $product->name }}</h1>
-                            <h3>€ {{$product->price}}</h3>
-                            <form action="{{route('admin.kassa.placeOrder', $user->id)}}" method="post" class="foodForm">
+                            <h3>€ {{ $product->price }}</h3>
+                            <form action="{{route('kassa.placeOrder', $user->id)}}" method="post" class="foodForm">
                                 @csrf
                                 @method('PUT')
 

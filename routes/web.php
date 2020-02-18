@@ -120,4 +120,4 @@ Route::get('/admin/kassa/order/{user}', 'KassaController@order')->name('kassa.or
 Route::put('/admin/kassa/order/{user}', 'KassaController@placeOrder')->name('kassa.placeOrder')->middleware('cashier'); //store
 Route::put('/admin/kassa/{user}', 'KassaController@update')->name('kassa.update')->middleware('cashier');               //update user balance (add)
 Route::get('/admin/kassa/search', 'KassaController@search')->name('kassa.search')->middleware('cashier');
-Route::get('/admin/kassa/logs', 'KassaController@logs')->name('kassa.logs');
+Route::get('/admin/kassa/logs', 'KassaController@logs')->name('kassa.logs')->middleware('cashier.or.admin');

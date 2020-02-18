@@ -67,6 +67,7 @@ class   Kernel extends HttpKernel
         'ownUser' => \App\Http\Middleware\IsOwnUser::class,
         'cashier' => \App\Http\Middleware\IsCashier::class,
         'superadmin' => \App\Http\Middleware\IsSuperAdmin::class,
+        'cashier.or.admin' => \App\Http\Middleware\IsCashierOrAdmin::class,
     ];
 
     /**
