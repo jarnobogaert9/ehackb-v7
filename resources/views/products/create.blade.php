@@ -25,9 +25,9 @@
 
                                 <div class="col-md-6">
                                     <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" aria-describedby="name"
-                                           placeholder="Eg. Hot dog" value="{{ old('name') }}" required>
+                                           placeholder="Eg. Hot dog" value="{{ old('name') }}" required/>
                                     @error('name')
-                                    <span class="invalid-feedback" role="alert">
+                                        <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
