@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
+    function removeImage($fileName){
+        $path = public_path('imgs'.DIRECTORY_SEPARATOR.'products'.DIRECTORY_SEPARATOR.$fileName);
+        if (file_exists($path)) {
+            File::delete($path);
+        }
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -103,23 +110,18 @@ class ProductController extends Controller
     {
         $validatedAttributes = request()->validate([
             'name' => 'required',
-            'photo' => 'mimes:jpg,jpeg,png|max:10000',
             'price' => 'required',
         ]);
 
-        if (isset($request['photo']))
-        {
-            if ($request->file('photo')->isValid())
-            {
-                $fileName = time().".".$request->photo->extension();
-                $request->photo->move(public_path('imgs/products'), $fileName);
+        if ($request->hasFile('photo') && $request->file('photo')->isValid()) {
+            $request->validate(['photo' => 'mimes:jpg,jpeg,png|max:10000']);
 
-                $validatedAttributes['photo'] = $fileName;
-            }
-        }
-        else
-        {
-            $validatedAttributes['photo'] = $product['photo'];
+            $this->removeImage($product->photo);
+
+            $fileName = time().".".$request->photo->extension();
+            $request->photo->move(public_path('imgs/products'), $fileName);
+
+            $validatedAttributes['photo'] = $fileName;
         }
 
         if (isset($request->quantity))
@@ -148,6 +150,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        $this->removeImage($product->photo);
         $product->delete();
         $deleted = true;
         return redirect()
