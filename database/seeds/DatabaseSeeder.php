@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             TeamsTableSeeder::class,
             UsersTableSeeder::class,
             TeamrequestsTableSeeder::class,
-            SeatsTableSeeder::class
+            SeatsTableSeeder::class,
+            ProductsTableSeeder::class
         ]);
     }
 }

@@ -35,7 +35,7 @@ class UsersTableSeeder extends Seeder
             'last_name' => 'Admin',
             'email' => 'test.admin@student.ehb.be',
             'password' => Hash::make('Azerty123'),
-            'role' => 3
+            'role' => 2
         ]);
     }
 }
