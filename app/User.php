@@ -54,4 +54,9 @@ class User extends Authenticatable
     public function created_teams(){
         return $this->hasMany(Team::class);
     }
+
+    public function kassa_logs()
+    {
+        return $this->hasMany(KassaLog::class);
+    }
 }
