@@ -2,59 +2,115 @@
 
 @section('content')
 <div class="container">
-    <form method="POST" action="{{route('products.update', $product->id)}}" class="settingsForm" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Edit '.$product->name) }}</div>
 
-        @if ($errors->any())
-            <div class="alert alert-danger alert-error">
-                @foreach ($errors->all() as $error)
-                    {{ $error }}
-                    <br>
-                @endforeach
-            </div>
-        @endif
+                <div class="card-body">
+                    <form method="POST" action="{{route('products.update', $product->id)}}" class="settingsForm" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
 
-        <h2>Edit a product</h2>
-        <hr>
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" name="name" aria-describedby="name"
-                   placeholder="Eg. Hot dog" value="{{$product->name}}" required>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="photo">Photo</label>
-                <input type="file" class="form-control-file" id="photo" value="{{$product->photo}}" name="photo">
+                        @if ($errors->any())
+                            <div class="alert alert-danger alert-error">
+                                @foreach ($errors->all() as $error)
+                                    {{ $error }}
+                                    <br>
+                                @endforeach
+                            </div>
+                        @endif
+
+                        <h2>Edit a product</h2>
+                        <hr>
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" aria-describedby="name"
+                                       placeholder="Eg. Hot dog" value="{{ $product->name }}" required/>
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="photo" class="col-md-4 col-form-label text-md-right">Photo</label>
+
+                            <div class="col-md-6">
+                                <input type="file" class="form-control-file @error('photo') is-invalid @enderror" id="photo" value="{{ $product->photo }}" name="photo"/>
+                                @error('photo')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">Current photo</label>
+
+                            <div class="col-md-6">
+                                <img src="{{ asset('imgs/products/'. $product->photo) }}" alt="" class="col-md-4"/>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="price" class="col-md-4 col-form-label text-md-right">Price</label>
+
+                            <div class="col-md-6">
+                                <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" step="any"
+                                   placeholder="Eg. 4.50" name="price" value="{{$product->price}}" required/>
+                                @error('price')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="quantity" class="col-md-4 col-form-label text-md-right">Quantity</label>
+
+                            <div class="col-md-6">
+                                <input type="number" class="form-control @error('quantity') is-invalid @enderror" id="quantity"
+                                       placeholder="Eg. 250" name="quantity" value="{{$product->quantity}}"/>
+                                @error('quantity')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                <small>Not required</small>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="sold" class="col-md-4 col-form-label text-md-right">Numbers sold</label>
+
+                            <div class="col-md-6">
+                                <input type="number" class="form-control @error('sold') is-invalid @enderror" id="sold"
+                                       placeholder="Eg. 45" name="sold" value="{{$product->sold}}"/>
+                                @error('sold')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                <small>Not required</small>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Create') }}
+                                </button>
+                                <a href="{{ route('adminpanel.products') }}" class="btn outlineBtn">
+                                    {{ __('Cancel') }}
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="form-group col-md-6">
-                <figure class="oldPhoto">
-                    <img src="{{asset('images/producten/'. $product->photo)}}" alt="">
-                    <figcaption>Current photo</figcaption>
-                </figure>
-            </div>
         </div>
-        <div class="form-group">
-            <label for="price">Price</label>
-            <input type="number" class="form-control" id="price" step="any"
-                   placeholder="Eg. 4.50" name="price" value="{{$product->price}}" required>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="quantity">Quantity</label>
-                <input type="number" class="form-control" id="quantity"
-                       placeholder="Eg. 250" name="quantity" value="{{$product->quantity}}">
-                <small>Not required</small>
-            </div>
-            <div class="form-group col-md-6">
-                <label for="sold">Numbers sold</label>
-                <input type="number" class="form-control" id="sold"
-                       placeholder="Eg. 45" name="sold" value="{{$product->sold}}">
-                <small>Not required</small>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Save</button>
-    </form>
+    </div>
 </div>
 @endsection
 
