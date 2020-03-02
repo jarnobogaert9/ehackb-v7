@@ -93,6 +93,21 @@ class UserController extends Controller
         return redirect(route('adminpanel.users'));
     }
 
+    public function toggleCashier(User $user)
+    {
+        if ($user->role == 3){
+            return redirect(route('adminpanel.users'));
+        }
+        else if ($user->role == 0){
+            $user->role = 1;
+        }
+        else if($user->role == 1){
+            $user->role = 0;
+        }
+        $user->save();
+        return redirect(route('adminpanel.users'));
+    }
+
     /**
      * Remove the specified resource from storage.
      *
