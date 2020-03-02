@@ -105,7 +105,7 @@ class TeamrequestController extends Controller
      */
     public function destroy(Teamrequest $teamrequest)
     {
-        if (Auth::user()->is_admin || Auth::user()->id === $teamrequest->team->creator->id || $teamrequest->rejected === 0){
+        if (Auth::user()->role == 2 || Auth::user()->id === $teamrequest->team->creator->id || $teamrequest->rejected === 0){
             $teamrequest->delete();
         }
         return(redirect(route('teams.one', $teamrequest->team->id)));

@@ -19,14 +19,12 @@ Route::get('/about', function () {return view('about');})->name('about');
 
 Auth::routes();
 
-//Route::get('/about', function (){return view('about');})->name('about');
-
-//Route::get('/admin/statistics', function (){return view('admin.statistics');})->name('adminpanel.statistics')->middleware('admin');
 Route::get('/admin/games', 'GameController@admin_index')->name('adminpanel.games')->middleware('admin');
 Route::get('/admin/talks', 'TalkController@admin_index')->name('adminpanel.talks')->middleware('admin');
 Route::get('/admin/users', 'UserController@index')->name('adminpanel.users')->middleware('admin');
 Route::get('/admin/teams', 'TeamController@admin_index')->name('adminpanel.teams')->middleware('admin');
 Route::get('/admin/sponsors', 'SponsorController@admin_index')->name('adminpanel.sponsors')->middleware('admin');
+Route::get('/admin/products', 'ProductController@admin_index')->name('adminpanel.products')->middleware('admin');
 
 /*
  * Profile
@@ -37,7 +35,7 @@ Route::get('/profile/{user}', 'UserController@show')->name('users.profile');
 /*
  * Users
  */
-Route::get('/users/{user}/toggleAdmin', 'UserController@toggleAdmin')->name('users.toggleAdmin')->middleware('admin');
+Route::get('/users/{user}/toggleAdmin', 'UserController@toggleAdmin')->name('users.toggleAdmin')->middleware('superadmin');
 Route::delete('/users/{user}', 'UserController@destroy')->name('users.delete')->middleware('ownUser');
 
 /*
@@ -103,3 +101,23 @@ Route::get('/seatmap/team/{team}', 'SeatController@edit')->name('seatmap.select'
 //Route::get('/games/{game}/edit', 'GameController@edit')->name('games.edit')->middleware('admin');
 Route::put('/seatmap/{team}', 'SeatController@claim_seats')->name('seats.claim')->middleware('teamleader');
 //Route::delete('/games/{game}', 'GameController@destroy')->name('games.delete')->middleware('admin');
+
+/*
+ * Products
+ */
+Route::get('/food', 'ProductController@index')->name('products.index')->middleware('auth');
+Route::get('/admin/products/create', 'ProductController@create')->name('products.create')->middleware('admin');
+Route::post('/admin/products', 'ProductController@store')->name('products.store')->middleware('admin');
+Route::get('admin/products/{product}', 'ProductController@edit')->name('products.edit')->middleware('admin');
+Route::put('admin/products/{product}', 'ProductController@update')->name('products.update')->middleware('admin');
+Route::delete('/admin/products/{product}', 'ProductController@destroy')->name('products.delete')->middleware('admin');
+
+/*
+ * Kassa
+ */
+Route::get('/admin/kassa', 'KassaController@index')->name('kassa.index')->middleware('cashier');
+Route::get('/admin/kassa/order/{user}', 'KassaController@order')->name('kassa.order')->middleware('cashier');           //create
+Route::put('/admin/kassa/order/{user}', 'KassaController@placeOrder')->name('kassa.placeOrder')->middleware('cashier'); //store
+Route::put('/admin/kassa/{user}', 'KassaController@update')->name('kassa.update')->middleware('cashier');               //update user balance (add)
+Route::get('/admin/kassa/search', 'KassaController@search')->name('kassa.search')->middleware('cashier');
+Route::get('/admin/kassa/logs', 'KassaController@logs')->name('kassa.logs')->middleware('cashier.or.admin');

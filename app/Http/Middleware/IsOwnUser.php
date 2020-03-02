@@ -16,7 +16,7 @@ class IsOwnUser
      */
     public function handle($request, Closure $next)
     {
-        if ($request->route('user') == Auth::user() || Auth::user()->is_admin){
+        if ($request->route('user') == Auth::user() || Auth::user()->role == 2){
             return $next($request);
         }
         return redirect(route('users.ownProfile'));

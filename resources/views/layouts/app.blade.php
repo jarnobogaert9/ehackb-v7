@@ -53,6 +53,9 @@
                                 <a class="nav-link" href="{{ route('talks.index') }}">Talks</a>
                             </li>
                             @auth
+                                <li class="nav-item {{ Request::is('products*') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('products.index') }}">Food</a>
+                                </li>
                                 <li class="nav-item {{ Request::is('seatmap*') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('seatmap') }}">Seat Map</a>
                                 </li>
@@ -125,7 +128,7 @@
                                         @csrf
                                     </form>
 
-                                    @if(Auth::user()->is_admin)
+                                    @if(Auth::user()->role >= 2)
                                         <div class="dropdown-divider"></div>
                                         <div class="admin-items">
                                             <a class="dropdown-item" href="{{ route('adminpanel.games') }}"><i class="material-icons">videogame_asset</i>{{ __('Competitions') }}</a>
@@ -133,6 +136,14 @@
                                             <a class="dropdown-item" href="{{ route('adminpanel.users') }}"><i class="material-icons">person</i>{{ __('Users') }}</a>
                                             <a class="dropdown-item" href="{{ route('adminpanel.teams') }}"><i class="material-icons">group</i>{{ __('Teams') }}</a>
                                             <a class="dropdown-item" href="{{ route('adminpanel.sponsors') }}"><i class="material-icons">loyalty</i>{{ __('Sponsors') }}</a>
+                                            <a class="dropdown-item" href="{{ route('adminpanel.products') }}"><i class="material-icons">videogame_asset</i>{{ __('Products') }}</a>
+                                            <a class="dropdown-item" href="{{ route('kassa.logs') }}"><i class="material-icons">videogame_asset</i>{{ __('Kassa Logs') }}</a>
+                                        </div>
+                                    @elseif(Auth::user()->role == 1)
+                                        <div class="dropdown-divider"></div>
+                                        <div class="admin-items">
+                                            <a class="dropdown-item" href="{{ route('kassa.index') }}"><i class="material-icons">videogame_asset</i>{{ __('Kassa') }}</a>
+                                            <a class="dropdown-item" href="{{ route('kassa.logs') }}"><i class="material-icons">videogame_asset</i>{{ __('Kassa Logs') }}</a>
                                         </div>
                                     @endif
                                 </div>

@@ -111,7 +111,7 @@ class TeamController extends Controller
     public function destroy(Team $team)
     {
         $team->delete();
-        return (Auth::user()->is_admin && $team->creator->id !== Auth::user()->id) ? redirect(route('adminpanel.teams')) : redirect(route('users.ownProfile'));
+        return (Auth::user()->role == 2 && $team->creator->id !== Auth::user()->id) ? redirect(route('adminpanel.teams')) : redirect(route('users.ownProfile'));
     }
 
     public function remove_user(Team $team, User $user)
@@ -122,7 +122,7 @@ class TeamController extends Controller
         if ($team->creator->id === Auth::user()->id || $user->id === Auth::user()->id) {
             return redirect(route('teams.edit', $team->id));
         }
-        else if(Auth::user()->is_admin) {
+        else if(Auth::user()->role == 2) {
             redirect(route('adminpanel.teams'));
         }
         return redirect(route('teams.edit', $team->id));
