@@ -52,6 +52,9 @@
                             <li class="nav-item {{ Request::is('talks*') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ route('talks.index') }}">Talks</a>
                             </li>
+                            <li class="nav-item {{ Request::is('nieuws*') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('nieuws.index') }}">Nieuws</a>
+                            </li>
                             @auth
                                 <li class="nav-item {{ Request::is('products*') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('products.index') }}">Food</a>
@@ -133,6 +136,7 @@
                                         <div class="admin-items">
                                             <a class="dropdown-item" href="{{ route('adminpanel.games') }}"><i class="material-icons">videogame_asset</i>{{ __('Competitions') }}</a>
                                             <a class="dropdown-item" href="{{ route('adminpanel.talks') }}"><i class="material-icons">record_voice_over</i>{{ __('Talks') }}</a>
+                                            <a class="dropdown-item" href="{{ route('adminpanel.nieuws') }}"><i class="material-icons">fiber_new</i>{{ __('Nieuws') }}</a>
                                             <a class="dropdown-item" href="{{ route('adminpanel.users') }}"><i class="material-icons">person</i>{{ __('Users') }}</a>
                                             <a class="dropdown-item" href="{{ route('adminpanel.teams') }}"><i class="material-icons">group</i>{{ __('Teams') }}</a>
                                             <a class="dropdown-item" href="{{ route('adminpanel.sponsors') }}"><i class="material-icons">loyalty</i>{{ __('Sponsors') }}</a>
