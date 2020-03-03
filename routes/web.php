@@ -21,6 +21,7 @@ Auth::routes();
 
 Route::get('/admin/games', 'GameController@admin_index')->name('adminpanel.games')->middleware('admin');
 Route::get('/admin/talks', 'TalkController@admin_index')->name('adminpanel.talks')->middleware('admin');
+Route::get('/admin/nieuws', 'NieuwsController@admin_index')->name('adminpanel.nieuws')->middleware('admin');
 Route::get('/admin/users', 'UserController@index')->name('adminpanel.users')->middleware('admin');
 Route::get('/admin/teams', 'TeamController@admin_index')->name('adminpanel.teams')->middleware('admin');
 Route::get('/admin/sponsors', 'SponsorController@admin_index')->name('adminpanel.sponsors')->middleware('admin');
@@ -36,6 +37,7 @@ Route::get('/profile/{user}', 'UserController@show')->name('users.profile');
  * Users
  */
 Route::get('/users/{user}/toggleAdmin', 'UserController@toggleAdmin')->name('users.toggleAdmin')->middleware('superadmin');
+Route::get('/users/{user}/toggleCashier', 'UserController@toggleCashier')->name('users.toggleCashier')->middleware('superadmin');
 Route::delete('/users/{user}', 'UserController@destroy')->name('users.delete')->middleware('ownUser');
 
 /*
@@ -80,6 +82,17 @@ Route::post('/talks/{talk}/remove', 'TalkController@user_remove')->name('talks.r
 Route::get('/talks/{talk}/edit', 'TalkController@edit')->name('talks.edit')->middleware('admin');
 Route::put('/talks/{talk}', 'TalkController@update')->name('talks.update')->middleware('admin');
 Route::delete('/talks/{talk}', 'TalkController@destroy')->name('talks.delete')->middleware('admin');
+
+/*
+ * Nieuws
+ */
+Route::get('/nieuws', 'NieuwsController@index')->name('nieuws.index');
+Route::post('/nieuws', 'NieuwsController@store')->name('nieuws.store')->middleware('admin');
+Route::get('/nieuws/create', 'NieuwsController@create')->name('nieuws.create')->middleware('admin');
+Route::get('/nieuws/{nieuws}', 'NieuwsController@show')->name('nieuws.one');
+Route::get('/nieuws/{nieuws}/edit', 'NieuwsController@edit')->name('nieuws.edit')->middleware('admin');
+Route::put('/nieuws/{nieuws}', 'NieuwsController@update')->name('nieuws.update')->middleware('admin');
+Route::delete('/nieuws/{nieuws}', 'NieuwsController@destroy')->name('nieuws.delete')->middleware('admin');
 
 /*
  * Sponsors
