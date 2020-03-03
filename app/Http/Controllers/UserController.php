@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
@@ -66,7 +67,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        // dd($user);
+        return view('users.edit', ['user' => $user]);
     }
 
     /**
@@ -78,7 +80,31 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $validatedAttr = $request->validate([
+            'username' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+        ]);
+
+        // Check if email is the same as before otherwise check if it is already in use by someone else
+        $formEmail = $request->email;
+
+        if ($formEmail == $user->email) {
+            // Used same email as before
+            dd('Same email');
+        } else{
+            // Check if email is already used by other users
+            $users = User::all();
+            foreach ($users as $user) {
+                if ($user->email == $formEmail) {
+                    return Redirect::back()->with('emailErr', 'Email is already in use');
+                    // return Redirect::back()->withErrors(['email', 'Email is already in use']); // Not working
+                } else{
+                    // No user with same email
+                }
+            }
+        }
     }
 
     public function toggleAdmin(User $user)
