@@ -3,6 +3,11 @@
     src: url('../fonts/digital-7.ttf');
 }
 
+@font-face {
+    font-family: Lovelo;
+    src: url('../fonts/Lovelo-LineLight.ttf');
+}
+
 canvas {
     position: absolute;
     top: 0;
@@ -43,7 +48,7 @@ body {
 }
 
 #main-title {
-    font-family: "Lovelo Line Light", serif;
+    font-family: Lovelo, serif;
     font-size: 10em;
     margin-bottom: 0;
     text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #FF3988, 0 0 0.5em #FF3988, 0 0 0.1em #FF3988, 0 10px 3px #000;
