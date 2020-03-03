@@ -32,7 +32,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white @if(Route::current()->getName() !== 'home') {{"shadow-sm"}} @endif">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    {{ config('app.name') }}
+                    EhackBv7
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -51,6 +51,9 @@
                             @endauth
                             <li class="nav-item {{ Request::is('talks*') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ route('talks.index') }}">Talks</a>
+                            </li>
+                            <li class="nav-item {{ Request::is('nieuws*') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('nieuws.index') }}">Nieuws</a>
                             </li>
                             @auth
                                 <li class="nav-item {{ Request::is('products*') ? 'active' : '' }}">
@@ -133,6 +136,7 @@
                                         <div class="admin-items">
                                             <a class="dropdown-item" href="{{ route('adminpanel.games') }}"><i class="material-icons">videogame_asset</i>{{ __('Competitions') }}</a>
                                             <a class="dropdown-item" href="{{ route('adminpanel.talks') }}"><i class="material-icons">record_voice_over</i>{{ __('Talks') }}</a>
+                                            <a class="dropdown-item" href="{{ route('adminpanel.nieuws') }}"><i class="material-icons">fiber_new</i>{{ __('Nieuws') }}</a>
                                             <a class="dropdown-item" href="{{ route('adminpanel.users') }}"><i class="material-icons">person</i>{{ __('Users') }}</a>
                                             <a class="dropdown-item" href="{{ route('adminpanel.teams') }}"><i class="material-icons">group</i>{{ __('Teams') }}</a>
                                             <a class="dropdown-item" href="{{ route('adminpanel.sponsors') }}"><i class="material-icons">loyalty</i>{{ __('Sponsors') }}</a>

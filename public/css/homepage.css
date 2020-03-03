@@ -1,5 +1,151 @@
+@font-face {
+    font-family: clock-font;
+    src: url('../fonts/digital-7.ttf');
+}
+
+@font-face {
+    font-family: Lovelo;
+    src: url('../fonts/Lovelo-LineLight.ttf');
+}
+
 canvas {
     position: absolute;
     top: 0;
     left: 0;
 }
+
+body {
+    background-color: #1b1e21;
+    color: white;
+}
+
+.navbar {
+    background-color: transparent!important;
+}
+
+.nav-link {
+    color: white!important;
+    font-size: 1.25em!important;
+}
+
+.navbar-brand {
+    color: white!important;
+    font-size: 1.25em!important;
+}
+
+/*Jumbotron*/
+.jumbotron {
+    background: url("../imgs/home-bg.png") fixed center;
+    background-size: cover;
+    height: 90vh;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+.title-section {
+    text-align: center;
+    margin-top: 10%;
+}
+
+#main-title {
+    font-family: Lovelo, serif;
+    font-size: 10em;
+    margin-bottom: 0;
+    text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #FF3988, 0 0 0.5em #FF3988, 0 0 0.1em #FF3988, 0 10px 3px #000;
+}
+
+#sub-title {
+    width: 60%;
+    margin-left: 20%;
+    font-size: 2em;
+}
+
+#datum {
+    margin-top: 5%;
+    font-size: 2.75em;
+}
+
+/*Countdown*/
+#countdown {
+    font-family: clock-font, serif;
+    font-size: 5em;
+    margin-bottom: 25%;
+    width: 100%;
+    color: #fff;
+    text-shadow:
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px #fff,
+        0 0 40px #1bcb21,
+        0 0 80px #1bcb21 ,
+        0 0 90px #1bcb21 ,
+        0 0 100px #1bcb21 ,
+        0 0 150px #1bcb21 ;
+}
+
+#countdowntxt {
+    font-size: 45px;
+    text-align: center;
+}
+
+#timer {
+    text-align: center;
+}
+
+td {
+    width: 1.8em;
+}
+
+.timer > .row {
+    margin-top: 20%;
+}
+
+#inschrijvingen {
+    font-size: 2em;
+    margin-top: 5%;
+    margin-left: 25%;
+    text-align: center;
+}
+
+#inschrijvingen > h3 {
+    text-align: left;
+}
+
+#inschrijvingen > h4 {
+    text-align: left;
+}
+
+#inschrijvingen-text {
+    text-align: left;
+    margin-top: 2em;
+    font-size: 0.75em;
+}
+
+#inschrijvingen-text:hover {
+    color: #15911a;
+}
+
+/*Scrollbar*/
+::-webkit-scrollbar {
+    width: 0;
+}
+
+#progressbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 6px;
+    border-radius: 0 0 6px 6px;
+    background: linear-gradient(to top, #B6FF00, transparent);
+    box-shadow:  0 0 5px #fff,
+    0 0 5px #fff,
+    0 0 7px #fff,
+    0 0 10px #1bcb21,
+    0 0 12px #1bcb21 ,
+    0 0 14px #1bcb21 ,
+    0 0 16px #1bcb21 ,
+    0 0 18px #1bcb21 ;
+}
+
+/*Sponsors*/
+
