@@ -101,12 +101,11 @@ class UserController extends Controller
                 if ($user->email == $formEmail) {
                     return Redirect::back()->with('emailErr', 'Email is already in use');
                     // return Redirect::back()->withErrors(['email', 'Email is already in use']); // Not working
-                } else{
-                    // No user with same email
-                    $user->update($validatedAttr);
-                    return redirect(route('users.profile', $user->id));
                 }
             }
+            // No user with same email
+            $user->update($validatedAttr);
+            return redirect(route('users.profile', $user->id));
         }
     }
 
