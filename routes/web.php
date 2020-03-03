@@ -32,6 +32,8 @@ Route::get('/admin/products', 'ProductController@admin_index')->name('adminpanel
  */
 Route::get('/profile', 'UserController@show')->name('users.ownProfile');
 Route::get('/profile/{user}', 'UserController@show')->name('users.profile');
+Route::get('/profile/{user}/edit', 'UserController@edit')->name('users.profile.edit');
+Route::put('/profile/{user}/update', 'UserController@update')->name('users.profile.update');
 
 /*
  * Users
