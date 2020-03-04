@@ -5,7 +5,7 @@
     <div class="jumbotron">
         <div class="container">
             <div class="title-section">
-                <p id="main-title">Ehackbv7</p>
+                <p id="main-title">Ehackbv7 - test</p>
                 <p id="sub-title">Gaming. Tournaments. E-Sports. LAN. Hacking. Keynotes. Boardgames. Movies. Technology.
                     Explore. Meet. Food. Drinks. Enjoy.</p>
                 <p id="datum">24 - 25 April 2020</p>
