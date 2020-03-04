@@ -15,22 +15,34 @@ canvas {
 }
 
 body {
-    background-color: #1b1e21;
+    background-color: white;
     color: white;
 }
 
+.content {
+    background-color: #1b1e21;
+}
+
+/*Navbar*/
 .navbar {
     background-color: transparent!important;
+    position: absolute;
+    width: 100vw;
+    z-index: 1;
 }
 
 .nav-link {
     color: white!important;
-    font-size: 1.25em!important;
+    font-size: 1.5em!important;
 }
 
 .navbar-brand {
     color: white!important;
-    font-size: 1.25em!important;
+    font-size: 1.5em!important;
+}
+
+.material-icons {
+    vertical-align: middle;
 }
 
 /*Jumbotron*/
@@ -96,8 +108,9 @@ td {
     width: 1.8em;
 }
 
-.timer > .row {
-    margin-top: 20%;
+.black-bg {
+    padding-top: 5%;
+    background-color: #1b1e21;
 }
 
 #inschrijvingen {
@@ -148,4 +161,78 @@ td {
 }
 
 /*Sponsors*/
+.nieuws {
+    height: 50vh;
+}
 
+/*Sponsors*/
+.bg-white > .container > h2 {
+    text-align: center;
+    color: black;
+    font-size: 4em;
+    margin-bottom: 1em;
+}
+
+.sponsors {
+    width: 100vw;
+}
+
+#sponsorTitle {
+    text-align: center;
+}
+
+#tierOne {
+    margin-bottom: 4em;
+}
+
+#tierTwo {
+    margin-bottom: 4em;
+}
+
+#tierOne > .col > img {
+    width: 100%;
+    max-height: 10em;
+    display: block;
+    margin: 0 auto;
+}
+
+#tierTwo > .col > img {
+    max-width: 95%;
+    max-height: 7.5em;
+    display: block;
+    margin: 0 auto;
+}
+
+#tierThree > .col > img {
+    max-width: 90%;
+    max-height: 5em;
+    display: block;
+    vertical-align: center;
+    margin: 0 auto 4em;
+}
+
+.slanted-top {
+    -webkit-clip-path: polygon(0 0, 100% 30%, 100% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 30%, 100% 100%, 0 100%);
+}
+
+.slanted {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+}
+
+/*Footer*/
+footer {
+    height: 30vh;
+    background-color: #1b1e21;
+}
+
+#credits {
+    padding-top: 5em;
+}
+
+.copy {
+    text-align: center;
+    color: white;
+    padding-top: 7.5em;
+}
