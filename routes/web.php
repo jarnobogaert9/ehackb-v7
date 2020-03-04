@@ -131,6 +131,7 @@ Route::delete('/admin/products/{product}', 'ProductController@destroy')->name('p
  * Kassa
  */
 Route::get('/admin/kassa', 'KassaController@index')->name('kassa.index')->middleware('cashier');
+Route::get('/admin/kassa/deposit/{user}', 'KassaController@deposit')->name('kassa.deposit')->middleware('cashier');           //create
 Route::get('/admin/kassa/order/{user}', 'KassaController@order')->name('kassa.order')->middleware('cashier');           //create
 Route::put('/admin/kassa/order/{user}', 'KassaController@placeOrder')->name('kassa.placeOrder')->middleware('cashier'); //store
 Route::put('/admin/kassa/{user}', 'KassaController@update')->name('kassa.update')->middleware('cashier');               //update user balance (add)

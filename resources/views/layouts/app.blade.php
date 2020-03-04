@@ -131,23 +131,22 @@
                                         @csrf
                                     </form>
 
-                                    @if(Auth::user()->role >= 2)
+                                    @if(Auth::user()->role >= 1)
                                         <div class="dropdown-divider"></div>
                                         <div class="admin-items">
-                                            <a class="dropdown-item" href="{{ route('adminpanel.games') }}"><i class="material-icons">videogame_asset</i>{{ __('Competitions') }}</a>
-                                            <a class="dropdown-item" href="{{ route('adminpanel.talks') }}"><i class="material-icons">record_voice_over</i>{{ __('Talks') }}</a>
-                                            <a class="dropdown-item" href="{{ route('adminpanel.nieuws') }}"><i class="material-icons">fiber_new</i>{{ __('Nieuws') }}</a>
-                                            <a class="dropdown-item" href="{{ route('adminpanel.users') }}"><i class="material-icons">person</i>{{ __('Users') }}</a>
-                                            <a class="dropdown-item" href="{{ route('adminpanel.teams') }}"><i class="material-icons">group</i>{{ __('Teams') }}</a>
-                                            <a class="dropdown-item" href="{{ route('adminpanel.sponsors') }}"><i class="material-icons">loyalty</i>{{ __('Sponsors') }}</a>
-                                            <a class="dropdown-item" href="{{ route('adminpanel.products') }}"><i class="material-icons">videogame_asset</i>{{ __('Products') }}</a>
-                                            <a class="dropdown-item" href="{{ route('kassa.logs') }}"><i class="material-icons">videogame_asset</i>{{ __('Kassa Logs') }}</a>
-                                        </div>
-                                    @elseif(Auth::user()->role == 1)
-                                        <div class="dropdown-divider"></div>
-                                        <div class="admin-items">
-                                            <a class="dropdown-item" href="{{ route('kassa.index') }}"><i class="material-icons">videogame_asset</i>{{ __('Kassa') }}</a>
-                                            <a class="dropdown-item" href="{{ route('kassa.logs') }}"><i class="material-icons">videogame_asset</i>{{ __('Kassa Logs') }}</a>
+                                            @if(Auth::user()->role >= 2)
+                                                <a class="dropdown-item" href="{{ route('adminpanel.games') }}"><i class="material-icons">videogame_asset</i>{{ __('Competitions') }}</a>
+                                                <a class="dropdown-item" href="{{ route('adminpanel.talks') }}"><i class="material-icons">record_voice_over</i>{{ __('Talks') }}</a>
+                                                <a class="dropdown-item" href="{{ route('adminpanel.nieuws') }}"><i class="material-icons">fiber_new</i>{{ __('Nieuws') }}</a>
+                                                <a class="dropdown-item" href="{{ route('adminpanel.users') }}"><i class="material-icons">person</i>{{ __('Users') }}</a>
+                                                <a class="dropdown-item" href="{{ route('adminpanel.teams') }}"><i class="material-icons">group</i>{{ __('Teams') }}</a>
+                                                <a class="dropdown-item" href="{{ route('adminpanel.sponsors') }}"><i class="material-icons">loyalty</i>{{ __('Sponsors') }}</a>
+                                                <a class="dropdown-item" href="{{ route('adminpanel.products') }}"><i class="material-icons">local_dining</i>{{ __('Products') }}</a>
+                                            @endif
+                                            @if(Auth::user()->role == 1 || Auth::user()->role == 3)
+                                                <a class="dropdown-item" href="{{ route('kassa.index') }}"><i class="material-icons">shopping_cart</i>{{ __('Kassa') }}</a>
+                                            @endif
+                                                <a class="dropdown-item" href="{{ route('kassa.logs') }}"><i class="material-icons">assignment</i>{{ __('Kassa Logs') }}</a>
                                         </div>
                                     @endif
                                 </div>

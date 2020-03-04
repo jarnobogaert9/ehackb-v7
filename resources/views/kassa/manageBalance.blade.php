@@ -12,23 +12,15 @@
                         <p class="balance-p">{{ '€ ' . $user->balance }}</p>
                     </div>
                 </div>
-                <div class="col-4">
-                    <form action="{{ route('kassa.update', $user->id) }}" method="post" class="balance-form">
-                        @csrf
-                        @method('PUT')
-
-                        <div class="form-group">
-                            <label for="amount">Voeg geld toe</label>
-                            <input type="number" step="any" class="form-control" id="amount" name="amount"
-                                   placeholder="Selecteer een bedrag" value="{{old('amount')}}" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">€€€</button>
-                    </form>
-                </div>
             </div>
-            <a href="{{ route('kassa.order', $user->id) }}">
-                <button type="submit" class="btn btn-primary" id="maakBestelling">Maak een bestelling</button>
+
+            <a href="{{ route('kassa.deposit', $user->id) }}">
+                <button type="submit" class="btn btn-primary">Laad geld op</button>
             </a>
+            <a href="{{ route('kassa.order', $user->id) }}">
+                <button type="submit" class="btn btn-primary">Maak een bestelling</button>
+            </a>
+
             @if(!empty($info))
                 <div class="row balance-row">
                     <div class="col-6">

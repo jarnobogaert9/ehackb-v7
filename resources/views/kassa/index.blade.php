@@ -7,8 +7,8 @@
                 @csrf
                 <div class="form-group">
                     <input type="search" name="search" class="form-control" id="autocomplete" aria-describedby="searchUser"
-                           placeholder="Search a user..." value="{{ old('search') }}">
-                    <button type="submit" class="btn btn-primary" id="autocomplete-btn">Search</button>
+                           placeholder="Gebruikersnaam..." value="{{ old('search') }}" autofocus required/>
+                    <button type="submit" class="btn btn-primary" id="autocomplete-btn">Zoek</button>
                     <small id="autocomplete-small" class="form-text text-muted">Wie zijn balance wil je beheren?</small>
                 </div>
             </form>

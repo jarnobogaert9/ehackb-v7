@@ -48,6 +48,12 @@ class KassaController extends Controller
         return view('kassa.logs', ['logs' => $logs]);
     }
 
+    public function deposit(User $user)
+    {
+        $products = Product::all();
+        return view('kassa.deposit', ['user' => $user]);
+    }
+
     public function order(User $user)
     {
         $products = Product::all();
