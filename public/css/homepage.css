@@ -56,7 +56,7 @@ body {
 
 .title-section {
     text-align: center;
-    margin-top: 10%;
+    margin-top: 7.5%;
 }
 
 #main-title {
@@ -69,12 +69,13 @@ body {
 #sub-title {
     width: 60%;
     margin-left: 20%;
-    font-size: 2em;
+    font-size: 1.75em;
 }
 
 #datum {
     margin-top: 5%;
-    font-size: 2.75em;
+    font-size: 2em;
+    font-weight: bold;
 }
 
 /*Countdown*/
@@ -158,6 +159,7 @@ td {
     0 0 14px #1bcb21 ,
     0 0 16px #1bcb21 ,
     0 0 18px #1bcb21 ;
+    z-index: 5;
 }
 
 /*Sponsors*/
@@ -169,7 +171,7 @@ td {
 .bg-white > .container > h2 {
     text-align: center;
     color: black;
-    font-size: 4em;
+    font-size: 3em;
     margin-bottom: 1em;
 }
 
@@ -191,21 +193,21 @@ td {
 
 #tierOne > .col > img {
     width: 100%;
-    max-height: 10em;
+    max-height: 8em;
     display: block;
     margin: 0 auto;
 }
 
 #tierTwo > .col > img {
     max-width: 95%;
-    max-height: 7.5em;
+    max-height: 5.5em;
     display: block;
     margin: 0 auto;
 }
 
 #tierThree > .col > img {
     max-width: 90%;
-    max-height: 5em;
+    max-height: 4em;
     display: block;
     vertical-align: center;
     margin: 0 auto 4em;
