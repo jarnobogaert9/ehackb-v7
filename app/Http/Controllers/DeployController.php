@@ -11,7 +11,7 @@ class DeployController extends Controller
         $githubPayload = $request->getContent();
         $githubHash = $request->header('X-Hub-Signature');
 
-        $branch = $githubPayload->head->ref;
+        $branch = $githubPayload->base->ref;
 
         if ($branch == 'test') {
             $localToken = config('app.deploy_secret');
