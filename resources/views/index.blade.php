@@ -10,8 +10,9 @@
                     Explore. Meet. Food. Drinks. Enjoy.</p>
                 <p id="datum">24 - 25 April 2020</p>
             </div>
-
-            <div class="timer">
+        </div>
+        <div class="black-bg">
+            <div class="container">
                 <div class="row">
                     <div class="col-6">
                         <div id="countdown">
@@ -39,14 +40,18 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
-            <div id="credits">
-                <!--TO DO: Credit bg -->
+            <div class="nieuws">
             </div>
         </div>
     </div>
+    @include('partials.sponsors')
+    <footer class="slanted-top">
+        <div id="credits">
+            <!--TO DO: Credit neon_bg -->
+            <p class="copy">Copyright &copy; 2020 EhackB. All Rights Reserved.</p>
+        </div>
+    </footer>
     <!--<canvas id=c></canvas>-->
     <script src="{{asset('js/hexagons.js')}}"></script>
     <script src="{{asset('js/timer.js')}}"></script>
