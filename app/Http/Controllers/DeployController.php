@@ -11,10 +11,10 @@ class DeployController extends Controller
         $githubPayload = $request->getContent();
         $githubHash = $request->header('X-Hub-Signature');
 
-        // Transform to json (php object)
-        $json = json_decode($githubPayload);
+        // Transform to json (php array)
+        $json = json_decode($githubPayload, true);
 
-        $branch = $json->base->ref;
+        $branch = $json['base']['ref'];
 
         if ($branch == 'test') {
             $localToken = config('app.deploy_secret');
