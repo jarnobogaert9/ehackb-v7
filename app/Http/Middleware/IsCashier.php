@@ -16,7 +16,7 @@ class IsCashier
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user() && Auth::user()->role == 1){
+        if (Auth::user() && Auth::user()->role == 1 || Auth::user()->role == 3){
             // If user is a cashier let them go to cashier specific pages
             return $next($request);
         }
