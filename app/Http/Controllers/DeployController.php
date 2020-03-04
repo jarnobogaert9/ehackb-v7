@@ -14,7 +14,7 @@ class DeployController extends Controller
         // Transform to json (php array)
         $json = json_decode($githubPayload, true);
 
-        $branch = $json['base']['ref'];
+        $branch = $json['pull_request']['base']['ref'];
 
         // Only if pull request is to test branch
         if ($branch == 'test') {
