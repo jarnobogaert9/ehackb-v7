@@ -15,6 +15,13 @@ return [
 
     'name' => env('APP_NAME', 'EhackBv7'),
 
+    /**
+     * 
+     * Deploy secret
+     * 
+     */
+    'deploy_secret' => env('APP_DEPLOY_SECRET'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
