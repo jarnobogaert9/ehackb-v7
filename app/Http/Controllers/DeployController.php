@@ -16,7 +16,7 @@ class DeployController extends Controller
 
         $branch = $json['pull_request']['base']['ref'];
 
-        // Only if pull request is to test branch
+        // Pull from test branch if pull request was to test branch
         if ($branch == 'test') {
             $localToken = config('app.deploy_secret');
             $localHash = 'sha1=' . hash_hmac('sha1', $githubPayload, $localToken, false);
