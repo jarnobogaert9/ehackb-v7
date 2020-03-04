@@ -11,7 +11,7 @@ class DeployController extends Controller
         $githubPayload = $request->getContent();
         $githubHash = $request->header('X-Hub-Signature');
 
-        // Transform to json
+        // Transform to json (php object)
         $json = json_decode($githubPayload);
 
         $branch = $json->base->ref;
