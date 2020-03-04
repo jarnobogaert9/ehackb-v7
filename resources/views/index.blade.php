@@ -50,7 +50,7 @@
     @include('partials.sponsors')
     <footer class="slanted-top">
         <div id="credits">
-            <!--TO DO: Credit bg -->
+            <!--TO DO: Credit neon_bg -->
             <p class="copy">Copyright &copy; 2020 EhackB. All Rights Reserved.</p>
         </div>
     </footer>
