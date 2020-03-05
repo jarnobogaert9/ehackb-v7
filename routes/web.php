@@ -11,13 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/about', function () {return view('about');})->name('about');
 
 Auth::routes();
+
+/**
+ * Deploy route
+ */
+Route::post('/deploy', 'DeployController@deploy');
 
 Route::get('/admin/games', 'GameController@admin_index')->name('adminpanel.games')->middleware('admin');
 Route::get('/admin/talks', 'TalkController@admin_index')->name('adminpanel.talks')->middleware('admin');
