@@ -11,13 +11,13 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Product::class, 10)->create();
-
         factory(App\Product::class)->create([
-            'id' => 999999,
+            'id' => 0,
             'name' => 'Geld opladen',
             'photo' => '324_money.jpg',
             'price' => 0
         ]);
+
+        factory(App\Product::class, 10)->create();
     }
 }

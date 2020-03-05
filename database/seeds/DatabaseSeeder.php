@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             TeamrequestsTableSeeder::class,
             SeatsTableSeeder::class,
-            ProductsTableSeeder::class
+            ProductsTableSeeder::class,
+            NieuwsTableSeeder::class
         ]);
     }
 }
