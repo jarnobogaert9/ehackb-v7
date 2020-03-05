@@ -32,7 +32,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white @if(Route::current()->getName() !== 'home') {{"shadow-sm"}} @endif">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    EhackBv7
+                    EhackBv7-test
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
