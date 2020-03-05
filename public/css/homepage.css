@@ -25,20 +25,20 @@ body {
 
 /*Navbar*/
 .navbar {
-    background-color: transparent!important;
+    background-color: transparent !important;
     position: absolute;
     width: 100vw;
     z-index: 1;
 }
 
 .nav-link {
-    color: white!important;
-    font-size: 1.5em!important;
+    color: white !important;
+    font-size: 1.5em !important;
 }
 
 .navbar-brand {
-    color: white!important;
-    font-size: 1.5em!important;
+    color: white !important;
+    font-size: 1.5em !important;
 }
 
 .material-icons {
@@ -85,15 +85,14 @@ body {
     margin-bottom: 25%;
     width: 100%;
     color: #fff;
-    text-shadow:
-        0 0 5px #fff,
-        0 0 10px #fff,
-        0 0 20px #fff,
-        0 0 40px #1bcb21,
-        0 0 80px #1bcb21 ,
-        0 0 90px #1bcb21 ,
-        0 0 100px #1bcb21 ,
-        0 0 150px #1bcb21 ;
+    text-shadow: 0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 20px #fff,
+    0 0 40px #1bcb21,
+    0 0 80px #1bcb21,
+    0 0 90px #1bcb21,
+    0 0 100px #1bcb21,
+    0 0 150px #1bcb21;
 }
 
 #countdowntxt {
@@ -148,23 +147,40 @@ td {
     position: fixed;
     top: 0;
     right: 0;
-    width: 6px;
+    width: 2px;
     border-radius: 0 0 6px 6px;
-    background: linear-gradient(to top, #B6FF00, transparent);
-    box-shadow:  0 0 5px #fff,
+    /*background: linear-gradient(to top, #B6FF00, transparent);*/
+    background: #B6FF00;
+    box-shadow: 0 0 5px #fff,
     0 0 5px #fff,
     0 0 7px #fff,
     0 0 10px #1bcb21,
-    0 0 12px #1bcb21 ,
-    0 0 14px #1bcb21 ,
-    0 0 16px #1bcb21 ,
-    0 0 18px #1bcb21 ;
+    0 0 12px #1bcb21,
+    0 0 14px #1bcb21,
+    0 0 16px #1bcb21,
+    0 0 18px #1bcb21;
     z-index: 5;
 }
 
-/*Sponsors*/
-.nieuws {
-    height: 50vh;
+/*news*/
+.recentnews {
+    width: 100%;
+    padding-bottom: 10%;
+}
+
+.recentnews > hr {
+    border: 1px solid #fff;
+    box-shadow: 0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 20px #fff,
+    0 0 40px #cba011,
+    0 0 80px #cba011,
+    0 0 90px #cba011,
+    0 0 100px #cba011,
+    0 0 150px #cba011;
+}
+.newstitle{
+    color: #ff9418;
 }
 
 /*Sponsors*/
