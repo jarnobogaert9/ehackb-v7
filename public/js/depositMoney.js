@@ -18,8 +18,8 @@ $(function () {
     $(".card:not(#amountToDeposit)").click((e) => {
         totAmount += +(e.currentTarget.id);
 
-        let listItem = $('<li class="list-group-item">&euro;<span>' + e.currentTarget.id + '</span></li>');
-        let clearItem = $('<i class="material-icons">clear</i>');
+        let listItem = $('<li class="list-group-item d-flex">&euro;<span>' + e.currentTarget.id + '</span></li>');
+        let clearItem = $('<i class="material-icons ml-auto">clear</i>');
         clearItem.click((f) => {
             totAmount -= +(e.currentTarget.id);
             f.currentTarget.parentNode.remove();

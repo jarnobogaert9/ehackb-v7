@@ -37,14 +37,20 @@
             </div>
         </div>
 
-        <form action="#" method="post">
-            @csrf
-            <input type="hidden" name="amount" value="0" id="input"/>
+        <div class="row ml-0 mr-0">
+            <form action="{{ route('kassa.storeMoney', $user->id) }}" method="post">
+                @csrf
+                <input type="hidden" name="amount" value="0" id="input"/>
 
-            <button type="submit" class="btn btn-primary">
-                {{ __('Bevestig') }}
-            </button>
-        </form>
+                <button type="submit" class="btn btn-primary">
+                    {{ __('Bevestig') }}
+                </button>
+            </form>
+
+            <a href="{{ route('kassa.index') }}" class="btn outlineBtn ml-1">
+                {{ __('Annuleer') }}
+            </a>
+        </div>
     </div>
 
     <script src="{{ asset('js/depositMoney.js') }}"></script>
