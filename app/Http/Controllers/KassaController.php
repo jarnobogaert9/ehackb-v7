@@ -109,7 +109,7 @@ class KassaController extends Controller
                 'product_id' => $request['id'],
                 'amount' => ($request['price'] * $validatedAttributes['amount']) * -1,
                 'balance' => $user->balance
-            ]);*/
+            ]);*//*
             $logData = [
                 'user_id' => $user->id,
                 'product_id' => $request['id'],
