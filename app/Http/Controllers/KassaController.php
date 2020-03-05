@@ -70,7 +70,7 @@ class KassaController extends Controller
 
         $logData = [
             'user_id' => $user->id,
-            'product_id' => 999999,
+            'product_id' => 0,
             'amount' => $validatedAttributes['amount'],
             'balance' => $user->balance
         ];
