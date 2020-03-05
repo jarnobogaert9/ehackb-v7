@@ -11,15 +11,23 @@ class DeployController extends Controller
         $githubPayload = $request->getContent();
         $githubHash = $request->header('X-Hub-Signature');
 
-        $localToken = config('app.deploy_secret');
-        $localHash = 'sha1=' . hash_hmac('sha1', $githubPayload, $localToken, false);
+        // Transform to json (php array)
+        $json = json_decode($githubPayload, true);
 
-        if (hash_equals($githubHash, $localHash)) {
-            $root_path = base_path();
-            $process = new Process('cd ' . $root_path . '; ./deploy.sh');
-            $process->run(function ($type, $buffer) {
-                echo $buffer;
-            });
+        $branch = $json['pull_request']['base']['ref'];
+
+        // Pull from test branch if pull request was to test branch
+        if ($branch == 'test') {
+            $localToken = config('app.deploy_secret');
+            $localHash = 'sha1=' . hash_hmac('sha1', $githubPayload, $localToken, false);
+    
+            if (hash_equals($githubHash, $localHash)) {
+                $root_path = base_path();
+                $process = new Process('cd ' . $root_path . '; ./deploy.sh');
+                $process->run(function ($type, $buffer) {
+                    echo $buffer;
+                });
+            }
         }
     }
 }
