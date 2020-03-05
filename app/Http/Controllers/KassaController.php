@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\KassaLog;
 use App\Product;
+use App\Sale;
+use App\SaleLines;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class KassaController extends Controller
 {
@@ -23,27 +26,6 @@ class KassaController extends Controller
 
     public function displayBalance(User $user)
     {
-        return view('kassa.manageBalance', ['user' => $user]);
-    }
-
-    public function update(Request $request, User $user)
-    {
-        $validatedAttributes = request()->validate([
-            'amount' => 'required',
-        ]);
-
-        $user->balance = $user->balance + $validatedAttributes['amount'];
-        $user->save();
-
-        $logData = [
-            'user_id' => $user->id,
-            'product_id' => 999999,
-            'amount' => $validatedAttributes['amount'],
-            'balance' => $user->balance
-        ];
-
-        KassaLog::create($logData);
-
         return view('kassa.manageBalance', ['user' => $user]);
     }
 
@@ -65,24 +47,31 @@ class KassaController extends Controller
             'amount' => 'required',
         ]);
 
-        $user->balance = $user->balance + $validatedAttributes['amount'];
-        $user->save();
-
-        $logData = [
+        $saleData = [
+            'cashier_id' => Auth::user()->id,
             'user_id' => $user->id,
-            'product_id' => 0,
-            'amount' => $validatedAttributes['amount'],
-            'balance' => $user->balance
+            'price' => $validatedAttributes['amount'],
+            'old_balance' => $user->balance,
+            'new_balance' => $user->balance + $validatedAttributes['amount']
         ];
 
-        KassaLog::create($logData);
+        $lineData = [
+            'product_id' => 1,
+            'amount' => 1,
+            'price' => $validatedAttributes['amount']
+        ];
+
+        $user->balance = $user->balance + $validatedAttributes['amount'];
+        $user->save();
+        Sale::create($saleData);
+        SaleLines::create($lineData);
 
         return redirect(route('kassa.displayBalance', $user->id));
     }
 
     public function order(User $user)
     {
-        $products = Product::all();
+        $products = Product::skip(1)->take(Product::count() - 1)->get();
         return view('kassa.order', [
             'products' => $products,
             'user' => $user
@@ -91,11 +80,17 @@ class KassaController extends Controller
 
     public function placeOrder(Request $request, User $user)
     {
-        $validatedAttributes = request()->validate([
-            'amount' => 'required',
+        $data = $request->validate([
+            'orderedProducts' => 'array',
+            'orderedProducts.*' => 'exists:products,id'
         ]);
 
-        if (($user->balance - ($request['price'] * $validatedAttributes['amount'])) < 0)
+        foreach ($data['orderedProducts'] as $orderedProduct) {
+            $product = Product::find($orderedProduct);
+
+        }
+
+        /*if (($user->balance - ($request['price'] * $validatedAttributes['amount'])) < 0)
         {
             $products = Product::all();
             $failed = true;
@@ -131,6 +126,6 @@ class KassaController extends Controller
             'amount' => $validatedAttributes['amount']
         ];
 
-        return view('kassa.manageBalance', ['user' => $user])->with('info', $info);
+        return view('kassa.manageBalance', ['user' => $user])->with('info', $info);*/
     }
 }

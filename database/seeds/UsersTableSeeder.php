@@ -22,11 +22,12 @@ class UsersTableSeeder extends Seeder
         });
 
         factory(App\User::class)->create([
-            'username' => 'gebruiker',
+            'username' => 'kassabeheerder',
             'first_name' => 'Test',
-            'last_name' => 'Gebruiker',
-            'email' => 'test@student.ehb.be',
-            'password' => Hash::make('123456')
+            'last_name' => 'kassabeheerder',
+            'email' => 'test.kassa@student.ehb.be',
+            'password' => Hash::make('Azerty123'),
+            'role' => 1
         ]);
 
         factory(App\User::class)->create([
@@ -36,6 +37,15 @@ class UsersTableSeeder extends Seeder
             'email' => 'test.admin@student.ehb.be',
             'password' => Hash::make('Azerty123'),
             'role' => 2
+        ]);
+
+        factory(App\User::class)->create([
+            'username' => 'superadmin',
+            'first_name' => 'Test',
+            'last_name' => 'Superadmin',
+            'email' => 'test.superadmin@student.ehb.be',
+            'password' => Hash::make('Azerty123'),
+            'role' => 3
         ]);
     }
 }

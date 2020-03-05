@@ -7,6 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Nieuws::class, function (Faker $faker) {
     return [
-        //
+        'title' => $faker->word,
+        'body' => $faker->paragraph,
     ];
 });
