@@ -7,45 +7,23 @@
                 Te weinig krediet beschikbaar
             </div>
         @endif
-        <h1>Bestelling voor: {{$user->username}}</h1>
-        <div class="row product-row">
-            @forelse($products as $index => $product)
+        <h1>Eten bestellen voor {{$user->username}}</h1>
 
-                @if($index % 2 == 0 && $index != 0)
-        </div>
-        <div class="row product-row">
-            @endif
-
-            <div class="col-6">
-                <div class="product-tile">
-                    <div class="row">
-                        <div class="col-4">
-                            <img src="{{ asset('imgs/products/'.$product->photo) }}" alt="" class="productImg">
-                        </div>
-                        <div class="col-8">
-                            <h1>{{ $product->name }}</h1>
-                            <h3>€ {{ $product->price }}</h3>
-                            <form action="{{route('kassa.placeOrder', $user->id)}}" method="post" class="foodForm">
-                                @csrf
-                                @method('PUT')
-
-                                <div class="form-group">
-                                    <input type="hidden" name="price" value="{{$product->price}}">
-                                    <input type="hidden" name="id" value="{{$product->id}}">
-                                    <input type="hidden" name="name" value="{{$product->name}}">
-                                    <input type="number" class="form-control amount" name="amount" aria-describedby="amount"
-                                           placeholder="Amount" value="{{old('amount')}}" min="1" required>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Order</button>
-                            </form>
+        @foreach($products->chunk(3) as $row)
+            <div class="card-columns col-md-9">
+                @foreach($row as $index => $product)
+                    <div class="card">
+                        <img src="{{ asset('imgs/products/'.$product->photo) }}" class="card-img-top" alt="" title="{{ $product->name }}"/>
+                        <div class="card-body">
+                            <h3 class="card-title">{{ $product->name }}</h3>
+                            <p class="card-text">&euro;{{ $product->price }}</p>
                         </div>
                     </div>
-                </div>
+                @endforeach
+                @for($index = $row->count() % 3; $index % 3 !== 0; $index++)
+                    <div class="card bg-transparent border-0"></div>
+                @endfor
             </div>
-
-            @empty
-                <p>There currently are no products...</p>
-            @endforelse
-        </div>
+        @endforeach
     </div>
 @endsection

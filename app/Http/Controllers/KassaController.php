@@ -21,6 +21,11 @@ class KassaController extends Controller
         return view('kassa.manageBalance', ['user' => $user]);
     }
 
+    public function displayBalance(User $user)
+    {
+        return view('kassa.manageBalance', ['user' => $user]);
+    }
+
     public function update(Request $request, User $user)
     {
         $validatedAttributes = request()->validate([
@@ -46,6 +51,33 @@ class KassaController extends Controller
     {
         $logs = KassaLog::all();
         return view('kassa.logs', ['logs' => $logs]);
+    }
+
+    public function deposit(User $user)
+    {
+        $products = Product::all();
+        return view('kassa.deposit', ['user' => $user]);
+    }
+
+    public function storeMoney(Request $request, User $user)
+    {
+        $validatedAttributes = request()->validate([
+            'amount' => 'required',
+        ]);
+
+        $user->balance = $user->balance + $validatedAttributes['amount'];
+        $user->save();
+
+        $logData = [
+            'user_id' => $user->id,
+            'product_id' => 0,
+            'amount' => $validatedAttributes['amount'],
+            'balance' => $user->balance
+        ];
+
+        KassaLog::create($logData);
+
+        return redirect(route('kassa.displayBalance', $user->id));
     }
 
     public function order(User $user)
