@@ -7,7 +7,7 @@
                 Te weinig krediet beschikbaar
             </div>
         @endif
-        <h1>Bestelling voor: {{$user->username}}</h1>
+        <h1>Eten bestellen voor {{$user->username}}</h1>
         <div class="row product-row">
             @forelse($products as $index => $product)
 
