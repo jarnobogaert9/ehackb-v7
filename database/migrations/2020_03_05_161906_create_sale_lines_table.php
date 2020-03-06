@@ -15,11 +15,13 @@ class CreateSaleLinesTable extends Migration
     {
         Schema::create('sale_lines', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('sale_id');
             $table->unsignedBigInteger('product_id');
             $table->tinyInteger('amount');
             $table->double('price', 5, 2);
             $table->timestamps();
 
+            $table->foreign('sale_id')->references('id')->on('sales')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }

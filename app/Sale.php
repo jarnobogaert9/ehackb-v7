@@ -10,12 +10,12 @@ class Sale extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function cashier()
     {
-        //return $this->belongsTo(Product::class);
+        return $this->belongsTo(User::class, 'cashier_id');
     }
 
     public function lines()

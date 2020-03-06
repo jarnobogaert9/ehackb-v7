@@ -21,16 +21,6 @@
                 <a href="{{ route('kassa.order', $user->id) }}">
                     <button type="submit" class="btn btn-primary">Maak een bestelling</button>
                 </a>
-
-                @if(!empty($info))
-                    <div class="row balance-row">
-                        <div class="col-6">
-                            <div class="alert alert-success bestelling-succes" role="alert">
-                                {{ $user->username . " heeft " . $info["amount"] . "x " . $info["name"] . " besteld voor €" . $info["price"] }}
-                            </div>
-                        </div>
-                    </div>
-                @endif
             </div>
         @else
             <p>No users found</p>
