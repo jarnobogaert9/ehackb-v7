@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\KassaLog;
 use App\Product;
 use App\Sale;
 use App\SaleLines;
@@ -31,13 +30,11 @@ class KassaController extends Controller
 
     public function logs()
     {
-        $logs = KassaLog::all();
-        return view('kassa.logs', ['logs' => $logs]);
+        return view('kassa.logs', ['sales' => Sale::latest()->get()]);
     }
 
     public function deposit(User $user)
     {
-        $products = Product::all();
         return view('kassa.deposit', ['user' => $user]);
     }
 
@@ -55,25 +52,24 @@ class KassaController extends Controller
             'new_balance' => $user->balance + $validatedAttributes['amount']
         ];
 
-        $lineData = [
+        $user->balance += $validatedAttributes['amount'];
+        $user->save();
+        $sale = Sale::create($saleData);
+
+        SaleLines::create([
+            'sale_id' => $sale->id,
             'product_id' => 1,
             'amount' => 1,
             'price' => $validatedAttributes['amount']
-        ];
-
-        $user->balance = $user->balance + $validatedAttributes['amount'];
-        $user->save();
-        Sale::create($saleData);
-        SaleLines::create($lineData);
+        ]);
 
         return redirect(route('kassa.displayBalance', $user->id));
     }
 
     public function order(User $user)
     {
-        $products = Product::skip(1)->take(Product::count() - 1)->get();
         return view('kassa.order', [
-            'products' => $products,
+            'products' => Product::skip(1)->take(Product::count() - 1)->get(),
             'user' => $user
         ]);
     }
@@ -85,47 +81,52 @@ class KassaController extends Controller
             'orderedProducts.*' => 'exists:products,id'
         ]);
 
+        $totPrice = 0;
+        $products = [];
+
         foreach ($data['orderedProducts'] as $orderedProduct) {
             $product = Product::find($orderedProduct);
-
+            $totPrice += $product->price;
+            if (array_key_exists($product->id, $products)){
+                $products[$product->id]->amount++;
+            }
+            else{
+                $product->amount = 1;
+                $products[$product->id] = $product;
+            }
         }
 
-        /*if (($user->balance - ($request['price'] * $validatedAttributes['amount'])) < 0)
+        if ($user->balance - $totPrice < 0)
         {
-            $products = Product::all();
-            $failed = true;
             return view('kassa.order', [
-                'products' => $products,
+                'products' => Product::all(),
                 'user' => $user,
-            ])->with('failed', $failed);
+            ])->with('failed', true);
         }
         else
         {
-            $user->balance = $user->balance - ($request['price'] * $validatedAttributes['amount']);
-            $user->save();
-
-            /*DB::table('kassa_logs')->insert([
+            $saleData = [
+                'cashier_id' => Auth::user()->id,
                 'user_id' => $user->id,
-                'product_id' => $request['id'],
-                'amount' => ($request['price'] * $validatedAttributes['amount']) * -1,
-                'balance' => $user->balance
-            ]);*//*
-            $logData = [
-                'user_id' => $user->id,
-                'product_id' => $request['id'],
-                'amount' => ($request['price'] * $validatedAttributes['amount']) * -1,
-                'balance' => $user->balance
+                'price' => -$totPrice,
+                'old_balance' => $user->balance,
+                'new_balance' => $user->balance - $totPrice
             ];
 
-            KassaLog::create($logData);
+            $user->balance -= $totPrice;
+            $user->save();
+            $sale = Sale::create($saleData);
+
+            foreach ($products as $currProd){
+                SaleLines::create([
+                    'sale_id' => $sale->id,
+                    'product_id' => $currProd->id,
+                    'amount' => $currProd->amount,
+                    'price' => $currProd->price * $currProd->amount
+                ]);
+            }
         }
 
-        $info = [
-            'name' => $request['name'],
-            'price' => ($request['price'] * $validatedAttributes['amount']),
-            'amount' => $validatedAttributes['amount']
-        ];
-
-        return view('kassa.manageBalance', ['user' => $user])->with('info', $info);*/
+        return view('kassa.manageBalance', ['user' => $user]);
     }
 }
