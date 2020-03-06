@@ -7,7 +7,8 @@
             <div class="container">
                 <div class="title-section">
                     <p id="main-title">Ehackbv7</p>
-                    <p id="sub-title">Gaming. Tournaments. E-Sports. LAN. Hacking. Keynotes. Boardgames. Movies. Technology.
+                    <p id="sub-title">Gaming. Tournaments. E-Sports. LAN. Hacking. Keynotes. Boardgames. Movies.
+                        Technology.
                         Explore. Meet. Food. Drinks. Enjoy.</p>
                     <p id="datum">24 - 25 April 2020</p>
                 </div>
@@ -43,7 +44,14 @@
                     </div>
                 </div>
             </div>
-            <div class="nieuws">
+            <div class="recentnews container">
+                <h3>Latest updates <a href="{{ route('nieuws.index') }}"><i class="small material-icons">open_in_new</i></a></h3>
+                @foreach($nieuws as $n)
+                    <hr>
+                    <h5 class="newstitle">{{ $n->title }}</h5>
+                    <p>{{substr($n->body, 0, 300)."..."}}</p>
+                    <a href="{{ route('nieuws.one', $n->id) }}">Meer info</a>
+                @endforeach
             </div>
         </div>
     </div>
