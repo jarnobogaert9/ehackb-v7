@@ -19,19 +19,25 @@
                         <div id="collapse{{ $sale->id }}" class="collapse" aria-labelledby="heading{{ $sale->id }}" data-parent="#accordion">
                             <div class="card-body d-flex pb-0">
                                 <p class="card-text">kassier: {{ $sale->cashier->username }}</p>
-                                <p class="ml-auto">Oude balans: &euro;{{ $sale->old_balance }}</p>
+                                <p class="ml-auto">Balans: </p>
+                                <p class="ml-3">&euro;{{ $sale->old_balance }}</p>
+                                <i class="material-icons ml-3">arrow_forward</i>
+                                <p class="ml-3">&euro;{{ $sale->new_balance }}</p>
+{{--                                <p class="ml-auto">Oude balans: &euro;{{ $sale->old_balance }}</p>--}}
                             </div>
                             <ul class="list-group list-group-flush">
                                 @foreach($sale->lines as $line)
                                     <li class="list-group-item d-flex pb-0">
                                         <p>{{ $line->product->name }}</p>
+                                        @if($line->product->id != 1)
                                         <p class="ml-auto">&euro;{{ $line->product->price }}</p>
                                         <p class="ml-auto">&times; {{ $line->amount }}</p>
+                                        @endif
                                         <p class="ml-auto">&euro;{{ $line->price }}</p>
                                     </li>
                                 @endforeach
                                 <li class="list-group-item border-success d-flex pb-0">
-                                    <p class="ml-auto">Nieuwe balans: &euro;{{ $sale->new_balance }}</p>
+                                    <p class="ml-auto"><b>&euro;{{ abs($sale->price) }}</b></p>
                                 </li>
                             </ul>
                         </div>
