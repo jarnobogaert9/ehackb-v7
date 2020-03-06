@@ -170,6 +170,7 @@ td {
 
 .recentnews > hr {
     border: 1px solid #fff;
+    background-color: #fff;
     box-shadow: 0 0 5px #fff,
     0 0 10px #fff,
     0 0 20px #fff,
