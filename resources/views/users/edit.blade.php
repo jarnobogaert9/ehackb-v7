@@ -45,9 +45,9 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                            @if (session()->has('emailErr'))
-                                <span class="invalid-feedback" role="alert">
-                                    {{ session('emailErr') }}
+                            @if(session()->has('emailErr'))
+                                <span class="invalid-feedback d-block">
+                                    <strong>{{ session('emailErr') }}</strong>
                                 </span>
                             @endif
                         </div>
