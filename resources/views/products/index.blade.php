@@ -14,7 +14,7 @@
                         <div class="product-tile">
                             <div class="row">
                                 <div class="col-4">
-                                  <img src="{{ asset('imgs/products/'.$product->photo)}}" alt="" class="productImg">
+                                  <img src="{{ asset('storage/'.$product->photo)}}" alt="" class="productImg">
                                 </div>
                                 <div class="col-8">
                                     <h1>{{ $product->name }}</h1>
