@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Sponsor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class SponsorController extends Controller
 {
@@ -56,10 +57,7 @@ class SponsorController extends Controller
         ]);
 
         if ($request->file('logo')->isValid()){
-            $fileName = time().".".$request->logo->extension();
-            $request->logo->move(public_path('imgs/sponsors'), $fileName);
-
-            $validatedAttr['logo'] = $fileName;
+            $validatedAttr['logo'] = request('logo')->store('uploads', 'public');
         }
 
         $sponsor = Sponsor::create($validatedAttr);
@@ -95,12 +93,9 @@ class SponsorController extends Controller
         if ($request->hasFile('logo') && $request->file('logo')->isValid()){
             $request->validate(['logo' => 'mimes:jpg,jpeg,png|max:10000']);
 
-            $this->removeImage($sponsor->logo);
+            Storage::delete('public//' . $sponsor->logo);
 
-            $fileName = time().".".$request->logo->extension();
-            $request->logo->move(public_path('imgs/sponsors'), $fileName);
-
-            $validatedAttr['logo'] = $fileName;
+            $validatedAttr['logo'] = request('logo')->store('uploads', 'public');
         }
 
         $sponsor->update($validatedAttr);
@@ -115,7 +110,7 @@ class SponsorController extends Controller
      */
     public function destroy(Sponsor $sponsor)
     {
-        $this->removeImage($sponsor->logo);
+        Storage::delete('public//' . $sponsor->logo);
         $sponsor->delete();
         return redirect(route('adminpanel.sponsors'));
     }

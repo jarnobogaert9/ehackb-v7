@@ -15,7 +15,7 @@
                     <div class="card-columns">
                         @foreach($row as $index => $product)
                             <div class="card" id="{{ $product->id }}">
-                                <img src="{{ asset('imgs/products/'.$product->photo) }}" class="card-img-top" alt="" title="{{ $product->name }}"/>
+                                <img src="{{ asset('storage/'.$product->photo) }}" class="card-img-top" alt="" title="{{ $product->name }}"/>
                                 <div class="card-body">
                                     <h3 class="card-title">{{ $product->name }}</h3>
                                     <p class="card-text">&euro;<span>{{ $product->price }}</span></p>

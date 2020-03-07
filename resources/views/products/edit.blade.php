@@ -52,7 +52,7 @@
                             <label class="col-md-4 col-form-label text-md-right">Current photo</label>
 
                             <div class="col-md-6">
-                                <img src="{{ asset('imgs/products/'. $product->photo) }}" alt="" class="col-md-4"/>
+                                <img src="{{ asset('storage/'. $product->photo) }}" alt="" class="col-md-4"/>
                             </div>
                         </div>
                         <div class="form-group row">

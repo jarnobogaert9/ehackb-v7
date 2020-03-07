@@ -57,10 +57,7 @@ class ProductController extends Controller
 
         if ($request->file('photo')->isValid())
         {
-            $fileName = time().".".$request->photo->extension();
-            $request->photo->move(public_path('imgs/products'), $fileName);
-
-            $validatedAttributes['photo'] = $fileName;
+            $validatedAttributes['photo'] = $request('photo')->store('uplaods', 'public');
         }
 
         if (!empty($request->quantity))
@@ -116,12 +113,9 @@ class ProductController extends Controller
         if ($request->hasFile('photo') && $request->file('photo')->isValid()) {
             $request->validate(['photo' => 'mimes:jpg,jpeg,png|max:10000']);
 
-            $this->removeImage($product->photo);
+            Storage::delete('public//' . $product->photo);
 
-            $fileName = time().".".$request->photo->extension();
-            $request->photo->move(public_path('imgs/products'), $fileName);
-
-            $validatedAttributes['photo'] = $fileName;
+            $validatedAttributes['photo'] = $request('photo')->store('uplaods', 'public');
         }
 
         if (isset($request->quantity))
@@ -150,7 +144,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $this->removeImage($product->photo);
+        Storage::delete('public//' . $product->photo);
         $product->delete();
         $deleted = true;
         return redirect()
