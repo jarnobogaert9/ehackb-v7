@@ -95,14 +95,13 @@ class UserController extends Controller
             $user->update($validatedAttr);
             return redirect(route('users.profile', $user->id));
         } else {
-            // Check if email is already used by other users
-            $users = User::all();
-            foreach ($users as $user) {
-                if ($user->email == $formEmail) {
-                    return Redirect::back()->with('emailErr', 'Email is already in use');
-                    // return Redirect::back()->withErrors(['email', 'Email is already in use']); // Not working
-                }
+            $foundUser = User::where('email', 'like', $formEmail)->first();
+
+            if ($foundUser != null) {
+                // Someone with same email as entered in form
+                return Redirect::back()->with('emailErr', 'Email is already in use');
             }
+           
             // No user with same email
             $user->update($validatedAttr);
             return redirect(route('users.profile', $user->id));
