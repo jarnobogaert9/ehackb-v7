@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Game;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class GameController extends Controller
 {
@@ -56,10 +57,7 @@ class GameController extends Controller
         ]);
 
         if ($request->file('thumbnail')->isValid()){
-            $fileName = time().".".$request->thumbnail->extension();
-            $request->thumbnail->move(public_path('imgs/games'), $fileName);
-
-            $validatedAttr['thumbnail'] = $fileName;
+            $validatedAttr['thumbnail'] = request('thumbnail')->store('uploads', 'public');
         }
 
         $game = Game::create($validatedAttr);
@@ -108,12 +106,9 @@ class GameController extends Controller
         if ($request->hasFile('thumbnail') && $request->file('thumbnail')->isValid()){
             $request->validate(['thumbnail' => 'mimes:jpg,jpeg,png|max:10000']);
 
-            $this->removeImage($game->thumbnail);
+            Storage::delete('public//' . $game->thumbnail);
 
-            $fileName = time().".".$request->thumbnail->extension();
-            $request->thumbnail->move(public_path('imgs/games'), $fileName);
-
-            $validatedAttr['thumbnail'] = $fileName;
+            $validatedAttr['thumbnail'] = request('thumbnail')->store('uploads', 'public');
         }
 
         $game->update($validatedAttr);
@@ -128,7 +123,7 @@ class GameController extends Controller
      */
     public function destroy(Game $game)
     {
-        $this->removeImage($game->thumbnail);
+        Storage::delete('public//' . $game->thumbnail);
         $game->delete();
         return redirect(route('games.index'));
     }
