@@ -3,7 +3,7 @@
         <div class="card-deck">
             @foreach($row as $index => $talk)
                 <a class="card" href="{{ route('talks.one', $talk->id) }}">
-                    <img src="{{ asset('imgs/talks/'.$talk->photo) }}" class="card-img-top" alt="" title="{{ $talk->title }}"/>
+                    <img src="{{ asset('storage/'.$talk->photo) }}" class="card-img-top" alt="" title="{{ $talk->title }}"/>
                     <div class="card-body">
                         <h3 class="card-title">{{ $talk->title }}</h3>
                         <p class="card-text">{{ $talk->excerpt }}</p>
