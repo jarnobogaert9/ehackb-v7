@@ -6,7 +6,7 @@
             <div class="col-md-4">
                 <div class="card-deck">
                     <div class="card">
-                        <img src="{{ asset('imgs/talks/'.$talk->photo) }}" class="card-img-top" alt="" title="{{ $talk->title }}"/>
+                        <img src="{{ asset('storage/'.$talk->photo) }}" class="card-img-top" alt="" title="{{ $talk->title }}"/>
                         <div class="card-body">
                             <h3 class="card-title">{{ $talk->title }}</h3>
                             <p class="card-text mb-0">{{ $talk->speaker }}</p>

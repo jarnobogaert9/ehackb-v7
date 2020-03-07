@@ -6,6 +6,7 @@ use App\Talk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class TalkController extends Controller
 {
@@ -61,10 +62,7 @@ class TalkController extends Controller
         ]);
 
         if ($request->file('photo')->isValid()){
-            $fileName = time().".".$request->photo->extension();
-            $request->photo->move(public_path('imgs/talks'), $fileName);
-
-            $validatedAttr['photo'] = $fileName;
+            $validatedAttr['photo'] = request('photo')->store('uploads', 'public');
         }
 
         $validatedAttr['available_places'] = $request->max_places;
@@ -133,12 +131,9 @@ class TalkController extends Controller
         if ($request->hasFile('photo') && $request->file('photo')->isValid()){
             $request->validate(['photo' => 'mimes:jpg,jpeg,png|max:10000']);
 
-            $this->removeImage($talk->photo);
+            Storage::delete('public//' . $talk->photo);
 
-            $fileName = time().".".$request->photo->extension();
-            $request->photo->move(public_path('imgs/talks'), $fileName);
-
-            $validatedAttr['photo'] = $fileName;
+            $validatedAttr['photo'] = request('photo')->store('uploads', 'public');
         }
 
         $talk->update($validatedAttr);
@@ -153,7 +148,7 @@ class TalkController extends Controller
      */
     public function destroy(Talk $talk)
     {
-        $this->removeImage($talk->photo);
+        Storage::delete('public//' . $talk->photo);
         $talk->delete();
         return redirect(route('talks.index'));
     }
