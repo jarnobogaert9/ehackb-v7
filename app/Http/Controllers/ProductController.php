@@ -58,7 +58,7 @@ class ProductController extends Controller
 
         if ($request->file('photo')->isValid())
         {
-            $validatedAttributes['photo'] = $request('photo')->store('uplaods', 'public');
+            $validatedAttributes['photo'] = request('photo')->store('uplaods', 'public');
         }
 
         if (!empty($request->quantity))
@@ -116,7 +116,7 @@ class ProductController extends Controller
 
             Storage::delete('public//' . $product->photo);
 
-            $validatedAttributes['photo'] = $request('photo')->store('uplaods', 'public');
+            $validatedAttributes['photo'] = request('photo')->store('uplaods', 'public');
         }
 
         if (isset($request->quantity))
