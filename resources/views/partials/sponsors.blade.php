@@ -5,21 +5,21 @@
             <div class="row" id="tierOne">
                 @foreach($sponsors['one'] as $s)
                     <div class="col">
-                        <img src="{{asset('imgs/sponsors/'.$s->logo)}}" alt="">
+                        <img src="{{asset('storage/'.$s->logo)}}" alt="">
                     </div>
                 @endforeach
             </div>
             <div class="row" id="tierTwo">
                 @foreach($sponsors['two'] as $s)
                     <div class="col">
-                        <img src="{{asset('imgs/sponsors/'.$s->logo)}}" alt="">
+                        <img src="{{asset('storage/'.$s->logo)}}" alt="">
                     </div>
                 @endforeach
             </div>
             <div class="row" id="tierThree">
                 @foreach($sponsors['three'] as $s)
                     <div class="col">
-                        <img src="{{asset('imgs/sponsors/'.$s->logo)}}" alt="">
+                        <img src="{{asset('storage/'.$s->logo)}}" alt="">
                     </div>
                 @endforeach
             </div>
