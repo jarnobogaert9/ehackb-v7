@@ -9,13 +9,6 @@ use Illuminate\Support\Facades\Storage;
 
 class SponsorController extends Controller
 {
-    function removeImage($fileName){
-        $path = public_path('imgs'.DIRECTORY_SEPARATOR.'sponsors'.DIRECTORY_SEPARATOR.$fileName);
-        if (file_exists($path)) {
-            File::delete($path);
-        }
-    }
-
     /**
      * Display a listing of the resource.
      *

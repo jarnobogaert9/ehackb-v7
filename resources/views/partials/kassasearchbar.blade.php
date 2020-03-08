@@ -1,5 +1,5 @@
 <div class="searchBar">
-    <form action="{{route('kassa.search')}}" method="get">
+    <form action="{{route('sales.search')}}" method="get">
         @csrf
         <div class="form-group">
             <input type="search" name="search" class="form-control" id="autocomplete" aria-describedby="searchUser"

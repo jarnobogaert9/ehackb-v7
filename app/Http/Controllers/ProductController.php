@@ -9,13 +9,6 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-    function removeImage($fileName){
-        $path = public_path('imgs'.DIRECTORY_SEPARATOR.'products'.DIRECTORY_SEPARATOR.$fileName);
-        if (file_exists($path)) {
-            File::delete($path);
-        }
-    }
-
     /**
      * Display a listing of the resource.
      *

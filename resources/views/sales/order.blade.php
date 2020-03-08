@@ -41,7 +41,7 @@
                     </div>
                     <ul class="list-group list-group-flush" id="history">
                         <li class="list-group-item d-flex">
-                            <form action="{{ route('kassa.placeOrder', $user->id) }}" method="post" id="form">
+                            <form action="{{ route('sales.placeOrder', $user->id) }}" method="post" id="form">
                                 @csrf
 
                                 <button type="submit" class="btn btn-primary">
@@ -49,7 +49,7 @@
                                 </button>
                             </form>
 
-                            <a href="{{ route('kassa.displayBalance', $user->id) }}" class="btn outlineBtn ml-1">
+                            <a href="{{ route('sales.manageAccount', $user->id) }}" class="btn outlineBtn ml-1">
                                 {{ __('Annuleer') }}
                             </a>
                         </li>

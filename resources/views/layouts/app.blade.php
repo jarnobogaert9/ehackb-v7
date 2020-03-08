@@ -144,9 +144,9 @@
                                                 <a class="dropdown-item" href="{{ route('adminpanel.products') }}"><i class="material-icons">local_dining</i>{{ __('Products') }}</a>
                                             @endif
                                             @if(Auth::user()->role == 1 || Auth::user()->role == 3)
-                                                <a class="dropdown-item" href="{{ route('kassa.index') }}"><i class="material-icons">shopping_cart</i>{{ __('Kassa') }}</a>
+                                                <a class="dropdown-item" href="{{ route('sales.index') }}"><i class="material-icons">shopping_cart</i>{{ __('Kassa') }}</a>
                                             @endif
-                                                <a class="dropdown-item" href="{{ route('kassa.logs') }}"><i class="material-icons">assignment</i>{{ __('Sales Data') }}</a>
+                                                <a class="dropdown-item" href="{{ route('adminpanel.salesdata') }}"><i class="material-icons">assignment</i>{{ __('Sales Data') }}</a>
                                         </div>
                                     @endif
                                 </div>

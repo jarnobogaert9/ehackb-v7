@@ -10,13 +10,6 @@ use Illuminate\Support\Facades\Storage;
 
 class TalkController extends Controller
 {
-    function removeImage($fileName){
-        $path = public_path('imgs'.DIRECTORY_SEPARATOR.'talks'.DIRECTORY_SEPARATOR.$fileName);
-        if (file_exists($path)) {
-            File::delete($path);
-        }
-    }
-
     /**
      * Display a listing of the resource.
      *
