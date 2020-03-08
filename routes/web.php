@@ -29,6 +29,7 @@ Route::get('/admin/users', 'UserController@index')->name('adminpanel.users')->mi
 Route::get('/admin/teams', 'TeamController@admin_index')->name('adminpanel.teams')->middleware('admin');
 Route::get('/admin/sponsors', 'SponsorController@admin_index')->name('adminpanel.sponsors')->middleware('admin');
 Route::get('/admin/products', 'ProductController@admin_index')->name('adminpanel.products')->middleware('admin');
+Route::get('/admin/sales', 'SaleController@index')->name('adminpanel.salesdata')->middleware('cashier.or.admin');
 
 /*
  * Profile
@@ -131,13 +132,12 @@ Route::put('admin/products/{product}', 'ProductController@update')->name('produc
 Route::delete('/admin/products/{product}', 'ProductController@destroy')->name('products.delete')->middleware('admin');
 
 /*
- * Kassa
+ * Sales
  */
-Route::get('/admin/kassa', 'KassaController@index')->name('kassa.index')->middleware('cashier');
-Route::get('/admin/kassa/deposit/{user}', 'KassaController@deposit')->name('kassa.deposit')->middleware('cashier');
-Route::post('/admin/kassa/deposit/{user}', 'KassaController@storeMoney')->name('kassa.storeMoney')->middleware('cashier');
-Route::get('/admin/kassa/order/{user}', 'KassaController@order')->name('kassa.order')->middleware('cashier');           //create
-Route::post('/admin/kassa/order/{user}', 'KassaController@placeOrder')->name('kassa.placeOrder')->middleware('cashier'); //store
-Route::get('/admin/kassa/search', 'KassaController@search')->name('kassa.search')->middleware('cashier');
-Route::get('/admin/kassa/logs', 'KassaController@logs')->name('kassa.logs')->middleware('cashier.or.admin');
-Route::get('/admin/kassa/{user}', 'KassaController@displayBalance')->name('kassa.displayBalance')->middleware('cashier');
+Route::get('/sales', 'SaleController@searchIndex')->name('sales.index')->middleware('cashier');
+Route::get('/sales/search', 'SaleController@search')->name('sales.search')->middleware('cashier');
+Route::get('/sales/account/{user}', 'SaleController@manageAccount')->name('sales.manageAccount')->middleware('cashier');
+Route::get('/sales/deposit/{user}', 'SaleController@deposit')->name('sales.deposit')->middleware('cashier');
+Route::post('/sales/deposit/{user}', 'SaleController@storeMoney')->name('sales.storeMoney')->middleware('cashier');
+Route::get('/sales/order/{user}', 'SaleController@order')->name('sales.order')->middleware('cashier');
+Route::post('/sales/order/{user}', 'SaleController@storeOrder')->name('sales.placeOrder')->middleware('cashier');

@@ -15,10 +15,10 @@
                     </div>
                 </div>
 
-                <a href="{{ route('kassa.deposit', $user->id) }}">
+                <a href="{{ route('sales.deposit', $user->id) }}">
                     <button type="submit" class="btn btn-primary">Laad geld op</button>
                 </a>
-                <a href="{{ route('kassa.order', $user->id) }}">
+                <a href="{{ route('sales.order', $user->id) }}">
                     <button type="submit" class="btn btn-primary">Maak een bestelling</button>
                 </a>
             </div>
