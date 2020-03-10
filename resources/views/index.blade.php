@@ -6,7 +6,7 @@
         <div class="jumbotron">
             <div class="container">
                 <div class="title-section">
-                    <p id="main-title">Ehackbv7</p>
+                    <p id="main-title">Ehackb<span id="vTitle">v</span><span id="7Title">7</span></p>
                     <p id="sub-title">Gaming. Tournaments. E-Sports. LAN. Hacking. Keynotes. Boardgames. Movies.
                         Technology.
                         Explore. Meet. Food. Drinks. Enjoy.</p>
@@ -39,7 +39,11 @@
                         <div id="inschrijvingen">
                             <h3>PARTICIPANTS</h3>
                             <h4>243/500</h4>
-                            <p id="inschrijvingen-text">Schrijf je nu in!</p>
+                            <div id="inschrijvingen-btn">
+                                <h1 id="btn-h1">
+                                    Schrijf je in!
+                                </h1>
+                            </div>
                         </div>
                     </div>
                 </div>
