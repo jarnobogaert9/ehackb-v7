@@ -28,12 +28,15 @@
                             <ul class="list-group list-group-flush">
                                 @foreach($sale->lines as $line)
                                     <li class="list-group-item d-flex pb-0">
-                                        <p>{{ $line->product->name }}</p>
                                         @if($line->product->id != 1)
-                                        <p class="ml-auto">&euro;{{ $line->product->price }}</p>
-                                        <p class="ml-auto">&times; {{ $line->amount }}</p>
+                                            <p class="col-md-3 p-0">{{ $line->product->name }}</p>
+                                            <p class="col-md-3 p-0 text-right">&euro;{{ $line->product->price }}</p>
+                                            <p class="col-md-3 p-0 text-right">&times; {{ $line->amount }}</p>
+                                            <p class="col-md-3 p-0 text-right">&euro;{{ $line->price }}</p>
+                                        @else
+                                            <p class="col-md-6 p-0">{{ $line->product->name }}</p>
+                                            <p class="col-md-6 p-0 text-right">&euro;{{ $line->price }}</p>
                                         @endif
-                                        <p class="ml-auto">&euro;{{ $line->price }}</p>
                                     </li>
                                 @endforeach
                                 <li class="list-group-item border-success d-flex pb-0">
