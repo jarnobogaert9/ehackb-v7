@@ -5,6 +5,14 @@ body{
     background-color: #1b1e21;
 }
 
+h1{
+    color: #ff0041;
+}
+
+hr{
+    border-color: white;
+}
+
 i{
     vertical-align: middle;
     margin-right: 0.1em;
@@ -154,6 +162,14 @@ USER PROFILE
 
 hr.mb-4{
     margin-top: 0.5rem;
+}
+
+.profileCard{
+    border: 1px solid white;
+}
+
+.profileCard .card-body{
+    padding: 1.25rem 0.5rem;
 }
 
 .profileCard > .card-img-top{

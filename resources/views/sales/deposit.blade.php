@@ -8,22 +8,22 @@
                 <div class="card-columns">
                     <div class="card" id="5">
                         <div class="card-body">
-                            <h3 class="card-title">&euro; 5</h3>
+                            <h3 class="card-title text-white">&euro; 5</h3>
                         </div>
                     </div>
                     <div class="card" id="10">
                         <div class="card-body">
-                            <h3 class="card-title">&euro; 10</h3>
+                            <h3 class="card-title text-white">&euro; 10</h3>
                         </div>
                     </div>
                     <div class="card" id="20">
                         <div class="card-body">
-                            <h3 class="card-title">&euro; 20</h3>
+                            <h3 class="card-title text-white">&euro; 20</h3>
                         </div>
                     </div>
                     <div class="card" id="50">
                         <div class="card-body">
-                            <h3 class="card-title">&euro; 50</h3>
+                            <h3 class="card-title text-white">&euro; 50</h3>
                         </div>
                     </div>
                 </div>
