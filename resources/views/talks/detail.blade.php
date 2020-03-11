@@ -15,7 +15,7 @@
 
                         <ul class="list-group list-group-flush">
 {{--                            <li class="list-group-item border-success">{{ $talk->available_places }}/{{ $talk->max_places }} places available</li>--}}
-                            <li class="list-group-item bg-@if($talk->available_places === 0){{"danger text-white"}} @elseif($talk->available_places <= 5){{"warning text-black"}} @else{{"success text-white"}}@endif">{{ $talk->available_places }}/{{ $talk->max_places }} places available</li>
+                            <li class="list-group-item @if($talk->available_places === 0){{"text-red"}} @else{{"text-white"}}@endif">{{ $talk->available_places }}/{{ $talk->max_places }} places available</li>
                             <li class="list-group-item">
                                 @auth
                                     @if(Auth::user()->subscribed_talks->contains($talk))

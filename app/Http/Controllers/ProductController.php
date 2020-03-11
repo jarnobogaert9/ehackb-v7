@@ -16,8 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        return view('products.index', ['products' => $products]);
+        return view('products.index', ['products' => Product::skip(1)->take(Product::count() - 1)->get()]);
     }
 
     public function admin_index()
