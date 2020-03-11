@@ -29,7 +29,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white @if(Route::current()->getName() !== 'home') {{"shadow-sm"}} @endif">
+        <nav class="navbar navbar-expand-md @if(Route::current()->getName() !== 'home') {{"shadow-sm"}} @endif">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('home') }}">
                     EhackBv7
@@ -63,9 +63,6 @@
                                     <a class="nav-link" href="{{ route('seatmap') }}">Seat Map</a>
                                 </li>
                             @endauth
-                            <li class="nav-item {{ Request::is('about*') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ route('about') }}">About</a>
-                            </li>
                         </ul>
 {{--                    @endif--}}
 

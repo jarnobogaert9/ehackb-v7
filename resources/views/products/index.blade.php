@@ -2,31 +2,23 @@
 
 @section('content')
     <div class="container">
-        <div class="row product-row">
-            @forelse($products as $index => $product)
-                @if($product->id != 999999)
-                    @if($index % 2 == 0 && $index != 0)
-                    </div>
-                    <div class="row product-row">
-                    @endif
-
-                    <div class="col-6">
-                        <div class="product-tile">
-                            <div class="row">
-                                <div class="col-4">
-                                  <img src="{{ asset('storage/'.$product->photo)}}" alt="" class="productImg">
-                                </div>
-                                <div class="col-8">
-                                    <h1>{{ $product->name }}</h1>
-                                    <h3>€ {{$product->price}}</h3>
-                                </div>
+        <div class="products">
+            @foreach($products->chunk(3) as $row)
+                <div class="card-deck">
+                    @foreach($row as $index => $product)
+                        <div class="card" id="{{ $product->id }}">
+                            <img src="{{ asset('storage/'.$product->photo) }}" class="card-img-top" alt="" title="{{ $product->name }}"/>
+                            <div class="card-body">
+                                <h3 class="card-title">{{ $product->name }}</h3>
+                                <p class="card-text">&euro;<span>{{ $product->price }}</span></p>
                             </div>
                         </div>
-                    </div>
-                @endif
-            @empty
-                <p>There currently are no products...</p>
-            @endforelse
+                    @endforeach
+                    @for($index = $row->count() % 3; $index % 3 !== 0; $index++)
+                        <div class="card bg-transparent border-0"></div>
+                    @endfor
+                </div>
+            @endforeach
         </div>
     </div>
 @endsection
