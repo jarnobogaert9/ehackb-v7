@@ -25,7 +25,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="@if(Route::current()->getName() !== 'home') {{ asset('css/main.css') }} @else {{ asset('css/homepage.css') }} @endif" rel="stylesheet">
+    <link href="@if(Route::current()->getName() !== 'home') {{ asset('css/style.css') }} @else {{ asset('css/homepage.css') }} @endif" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -39,7 +39,7 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    @if(Route::current()->getName() !== 'home')
+{{--                    @if(Route::current()->getName() !== 'home')--}}
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item {{ Request::is('games*') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ route('games.index') }}">Competitions</a>
@@ -67,7 +67,7 @@
                                 <a class="nav-link" href="{{ route('about') }}">About</a>
                             </li>
                         </ul>
-                    @endif
+{{--                    @endif--}}
 
                     <ul class="navbar-nav ml-auto">
                         @guest
