@@ -40,22 +40,29 @@
                             <h3>PARTICIPANTS</h3>
                             <h4>243/500</h4>
                             <div id="inschrijvingen-btn">
-                                <h1 id="btn-h1">
-                                    Schrijf je in!
-                                </h1>
+                                <a href="{{ route('register') }}">
+                                    <h1 id="btn-h1">
+                                        Schrijf je in!
+                                    </h1>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="recentnews container">
-                <h3>Latest updates <a href="{{ route('nieuws.index') }}"><i class="small material-icons">open_in_new</i></a></h3>
-                @foreach($nieuws as $n)
-                    <hr>
-                    <h5 class="newstitle">{{ $n->title }}</h5>
-                    <p>{{substr($n->body, 0, 300)."..."}}</p>
-                    <a href="{{ route('nieuws.one', $n->id) }}">Meer info</a>
-                @endforeach
+                <div class="row">
+                    <div class="col-6">
+                        <h3>Latest updates <a href="{{ route('nieuws.index') }}"><i class="small material-icons pink">open_in_new</i></a></h3>
+                        @foreach($nieuws as $n)
+                            <div class="news-item">
+                                <h5 class="newstitle">{{ $n->title }}</h5>
+                                <p class="news-body">{{substr($n->body, 0, 300)."..."}}</p>
+                                <a href="{{ route('nieuws.one', $n->id) }}" class="meer-info">Meer info</a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </div>
     </div>
