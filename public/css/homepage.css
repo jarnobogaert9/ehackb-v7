@@ -1,3 +1,4 @@
+/*Fonts*/
 @font-face {
     font-family: clock-font;
     src: url('../fonts/digital-7.ttf');
@@ -8,6 +9,7 @@
     src: url('../fonts/Lovelo-LineLight.ttf');
 }
 
+/*General*/
 canvas {
     position: absolute;
     top: 0;
@@ -421,5 +423,3 @@ footer {
     color: white;
     padding-top: 7.5em;
 }
-
-/*Dit is een comment*/
