@@ -6,7 +6,7 @@
         <div class="jumbotron">
             <div class="container">
                 <div class="title-section">
-                    <p id="main-title">Ehackb<span id="vTitle">v</span><span id="7Title">7</span></p>
+                    <p id="main-title">Ehackb<span id="vTitle">v</span>7</p>
                     <p id="sub-title">Gaming. Tournaments. E-Sports. LAN. Hacking. Keynotes. Boardgames. Movies.
                         Technology.
                         Explore. Meet. Food. Drinks. Enjoy.</p>
@@ -53,7 +53,7 @@
             <div class="recentnews container">
                 <div class="row">
                     <div class="col-6">
-                        <h3>Latest updates <a href="{{ route('nieuws.index') }}"><i class="small material-icons pink">open_in_new</i></a></h3>
+                        <h3>LATEST UPDATES <a href="{{ route('nieuws.index') }}"><i class="small material-icons pink">open_in_new</i></a></h3>
                         @foreach($nieuws as $n)
                             <div class="news-item">
                                 <h5 class="newstitle">{{ $n->title }}</h5>
