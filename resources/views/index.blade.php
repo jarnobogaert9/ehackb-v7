@@ -62,6 +62,9 @@
                             </div>
                         @endforeach
                     </div>
+                    <div class="socials">
+                        <iframe src="https://discordapp.com/widget?id=688103993368379425&theme=dark" width="300" height="400" allowtransparency="true" frameborder="0"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
