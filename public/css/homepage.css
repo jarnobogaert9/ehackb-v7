@@ -92,13 +92,13 @@ body {
     width: 100%;
     color: #fff;
     text-shadow: 0 0 5px #fff,
-    0 0 10px #fff,
-    0 0 20px #fff,
-    0 0 40px #1bcb21,
-    0 0 80px #1bcb21,
-    0 0 90px #1bcb21,
-    0 0 100px #1bcb21,
-    0 0 150px #1bcb21;
+    0 0 8px #fff,
+    0 0 16px #fff,
+    0 0 36px #1bcb21,
+    0 0 64px #1bcb21,
+    0 0 72px #1bcb21,
+    0 0 85px #1bcb21,
+    0 0 100px #1bcb21;
 }
 
 #countdowntxt {
@@ -350,6 +350,11 @@ td {
 
 .news-item {
     margin-bottom: 5em;
+}
+
+.socials{
+   margin-left: 20%;
+    margin-top: 5%;
 }
 
 /*Sponsors*/
