@@ -20,7 +20,7 @@
                         @if($ownProfile)
                             <p class="card-text">{{ $user->email }}</p>
                         @endif
-                        <a href="{{ route('users.profile.edit', Auth::user()->id) }}" class="btn btn-primary">Edit profile</a>
+                        <a href="{{ route('users.profile.edit', Auth::user()->id) }}" class="btn inlineBtn">Edit profile</a>
                     </div>
                 </div>
             </div>

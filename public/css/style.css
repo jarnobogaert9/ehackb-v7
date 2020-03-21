@@ -25,6 +25,10 @@ i{
     color: black !important;
 }
 
+.card.selected{
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
 /*
 buttons & links
  */
