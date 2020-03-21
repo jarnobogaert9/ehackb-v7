@@ -105,11 +105,11 @@ CARDS
     border: none;
 }
 
-.card-header{
+div:not(#accordion) > .card > .card-header{
     margin-bottom: 1rem;
 }
 
-.card-body{
+div:not(#accordion) > .card > .card-body{
     padding: 0;
 }
 
@@ -129,6 +129,9 @@ CARDS
 
 .list-group.list-group-flush, .list-group-item{
     background-color: inherit;
+}
+
+div:not(#accordion) .list-group.list-group-flush, div:not(#accordion) > .card > ul > .list-group-item{
     border: none;
     padding-left: 0;
     padding-right: 0;
