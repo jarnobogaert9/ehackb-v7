@@ -13,9 +13,9 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/about', function () {return view('about');})->name('about');
-
 Auth::routes();
+Route::get('/register/talks', 'MultiStepController@talks')->name('register.stepOne')->middleware('auth');
+Route::post('/register/talks', 'MultiStepController@subscribeTalks')->name('register.subscribeTalks')->middleware('auth');
 
 /**
  * Deploy route

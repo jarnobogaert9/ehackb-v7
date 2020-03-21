@@ -5,6 +5,19 @@ body{
     background-color: #1b1e21;
 }
 
+h1{
+    color: #ff0041;
+}
+
+h3, p, .btn:hover{
+    color: white;
+}
+
+hr{
+    border-color: white;
+    margin-top: 0.5rem;
+}
+
 i{
     vertical-align: middle;
     margin-right: 0.1em;
@@ -33,6 +46,13 @@ a:hover{
 .btn{
     padding: 0.25em 0.5em;
     transition: all 0.3s ease 0s;
+    border-radius: 0;
+    color: white;
+}
+
+.btn i{
+    color: white !important;
+    font-size: 120%;
 }
 
 .outlineBtn{
@@ -47,12 +67,12 @@ a:hover{
 }
 
 .inlineBtn{
-    background-color: #c7505c;
+    background-color: #ff0041;
     color: white;
 }
 
 .inlineBtn:hover{
-    background-color: #c03d4b;
+    background-color: #ff0041;
     color: white;
 }
 
@@ -83,6 +103,10 @@ CARDS
     background-color: transparent;
     color: white;
     border: none;
+}
+
+.card-header{
+    margin-bottom: 1rem;
 }
 
 .card-body{
@@ -154,6 +178,14 @@ USER PROFILE
 
 hr.mb-4{
     margin-top: 0.5rem;
+}
+
+.profileCard{
+    border: 1px solid white;
+}
+
+.profileCard .card-body{
+    padding: 1.25rem 0.5rem;
 }
 
 .profileCard > .card-img-top{
