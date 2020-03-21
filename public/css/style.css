@@ -22,7 +22,14 @@ i{
     vertical-align: middle;
     margin-right: 0.1em;
     cursor: pointer;
+}
+
+.dropdown-item > i{
     color: black !important;
+}
+
+.btn i{
+    font-size: 120%;
 }
 
 .card.selected{
@@ -52,11 +59,6 @@ a:hover{
     transition: all 0.3s ease 0s;
     border-radius: 0;
     color: white;
-}
-
-.btn i{
-    color: white !important;
-    font-size: 120%;
 }
 
 .outlineBtn{
