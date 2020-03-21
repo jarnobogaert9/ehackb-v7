@@ -28,6 +28,6 @@ class MultiStepController extends Controller
             }
         }
 
-        return view('users.profile', ['user' => Auth::user()]);
+        return redirect(route('users.ownProfile'));
     }
 }
