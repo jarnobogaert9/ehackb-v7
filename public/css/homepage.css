@@ -1,3 +1,4 @@
+/*Fonts*/
 @font-face {
     font-family: clock-font;
     src: url('../fonts/digital-7.ttf');
@@ -8,6 +9,7 @@
     src: url('../fonts/Lovelo-LineLight.ttf');
 }
 
+/*General*/
 canvas {
     position: absolute;
     top: 0;
@@ -90,13 +92,13 @@ body {
     width: 100%;
     color: #fff;
     text-shadow: 0 0 5px #fff,
-    0 0 10px #fff,
-    0 0 20px #fff,
-    0 0 40px #1bcb21,
-    0 0 80px #1bcb21,
-    0 0 90px #1bcb21,
-    0 0 100px #1bcb21,
-    0 0 150px #1bcb21;
+    0 0 8px #fff,
+    0 0 16px #fff,
+    0 0 36px #1bcb21,
+    0 0 64px #1bcb21,
+    0 0 72px #1bcb21,
+    0 0 85px #1bcb21,
+    0 0 100px #1bcb21;
 }
 
 #countdowntxt {
@@ -144,12 +146,18 @@ td {
     cursor: pointer;
     width: 40%;
     margin-top: 1em;
+    animation: border-flicker 2s infinite;
+}
 
+#inschrijvingen-btn > a:hover {
+    text-decoration: none;
 }
 
 #btn-h1 {
     font-size: 0.75em;
     color: rgba(120, 0, 50, .5);
+    margin-bottom: 0;
+    animation: text-flicker 2s infinite;
 }
 
 #inschrijvingen-btn:hover h1 {
@@ -158,131 +166,131 @@ td {
 
 @keyframes text-flicker {
     2% {
-        color: rgb(230, 0, 120);
-        text-shadow: 0 0 15px rgb(230, 0, 120);
+        color: #ff0041;
+        text-shadow: 0 0 15px #ff0041;
     }
     3% {
         color: rgba(120, 0, 50, .5);
         text-shadow: none;
     }
     6% {
-        color: rgb(230, 0, 120);
-        text-shadow: 0 0 15px rgb(230, 0, 120);
+        color: #ff0041;
+        text-shadow: 0 0 15px #ff0041;
     }
     9% {
         color: rgba(120, 0, 50, .5);
         text-shadow: none;
     }
     11% {
-        color: rgb(230, 0, 120);
-        text-shadow: 0 0 15px rgb(230, 0, 120);
+        color: #ff0041;
+        text-shadow: 0 0 15px #ff0041;
     }
     14% {
         color: rgba(120, 0, 50, .5);
         text-shadow: none;
     }
     18% {
-        color: rgb(230, 0, 120);
-        text-shadow: 0 0 15px rgb(230, 0, 120);
+        color: #ff0041;
+        text-shadow: 0 0 15px #ff0041;
     }
     32% {
-        color: rgb(230, 0, 120);
-        text-shadow: 0 0 15px rgb(230, 0, 120);
+        color: #ff0041;
+        text-shadow: 0 0 15px #ff0041;
     }
     33% {
         color: rgba(120, 0, 50, .5);
         text-shadow: none;
     }
     37% {
-        color: rgb(230, 0, 120);
-        text-shadow: 0 0 15px rgb(230, 0, 120);
+        color: #ff0041;
+        text-shadow: 0 0 15px #ff0041;
     }
     39% {
         color: rgba(120, 0, 50, .5);
         text-shadow: none;
     }
     43% {
-        color: rgb(230, 0, 120);
-        text-shadow: 0 0 15px rgb(230, 0, 120);
+        color: #ff0041;
+        text-shadow: 0 0 15px #ff0041;
     }
     46% {
         color: rgba(120, 0, 50, .5);
         text-shadow: none;
     }
     47% {
-        color: rgb(230, 0, 120);
-        text-shadow: 0 0 15px rgb(230, 0, 120);
+        color: #ff0041;
+        text-shadow: 0 0 15px #ff0041;
     }
     100% {
-        color: rgb(230, 0, 120);
-        text-shadow: 0 0 15px rgb(230, 0, 120);
+        color: #ff0041;
+        text-shadow: 0 0 15px #ff0041;
     }
 }
 
 @keyframes border-flicker {
     2% {
-        border: 3px solid rgb(0, 180, 230);
-        box-shadow: 0 0 15px -1px rgb(0, 180, 230),
-        0 0 12px -1px rgb(0, 180, 230) inset;
+        border: 3px solid #ff0041;
+        box-shadow: 0 0 15px -1px #ff0041,
+        0 0 12px -1px #ff0041 inset;
     }
     3% {
-        border: 3px solid rgb(0, 40, 70);
+        border: 3px solid rgba(120, 0, 50, .5);
         box-shadow: none;
     }
     5% {
-        border: 3px solid rgb(0, 180, 230);
-        box-shadow: 0 0 15px -1px rgb(0, 180, 230),
-        0 0 12px -1px rgb(0, 180, 230) inset;
+        border: 3px solid #ff0041;
+        box-shadow: 0 0 15px -1px #ff0041,
+        0 0 12px -1px #ff0041 inset;
     }
     6% {
-        border: 3px solid rgb(0, 40, 70);
+        border: 3px solid rgba(120, 0, 50, .5);
         box-shadow: none;
     }
     7% {
-        border: 3px solid rgb(0, 180, 230);
-        box-shadow: 0 0 15px -1px rgb(0, 180, 230),
-        0 0 12px -1px rgb(0, 180, 230) inset;
+        border: 3px solid #ff0041;
+        box-shadow: 0 0 15px -1px #ff0041,
+        0 0 12px -1px #ff0041 inset;
     }
     9% {
-        border: 3px solid rgb(0, 40, 70);
+        border: 3px solid rgba(120, 0, 50, .5);
         box-shadow: none;
     }
     13% {
-        border: 3px solid rgb(0, 180, 230);
-        box-shadow: 0 0 15px -1px rgb(0, 180, 230),
-        0 0 12px -1px rgb(0, 180, 230) inset;
+        border: 3px solid #ff0041;
+        box-shadow: 0 0 15px -1px #ff0041,
+        0 0 12px -1px #ff0041 inset;
     }
     16% {
-        border: 3px solid rgb(0, 40, 70);
+        border: 3px solid rgba(120, 0, 50, .5);
         box-shadow: none;
     }
     18% {
-        border: 3px solid rgb(0, 180, 230);
-        box-shadow: 0 0 15px -1px rgb(0, 180, 230),
-        0 0 12px -1px rgb(0, 180, 230) inset;
+        border: 3px solid #ff0041;
+        box-shadow: 0 0 15px -1px #ff0041,
+        0 0 12px -1px #ff0041 inset;
     }
     22% {
-        border: 3px solid rgb(0, 40, 70);
+        border: 3px solid rgba(120, 0, 50, .5);
         box-shadow: none;
     }
     34% {
-        border: 3px solid rgb(0, 180, 230);
-        box-shadow: 0 0 15px -1px rgb(0, 180, 230),
-        0 0 12px -1px rgb(0, 180, 230) inset;
+        border: 3px solid #ff0041;
+        box-shadow: 0 0 15px -1px #ff0041,
+        0 0 12px -1px #ff0041 inset;
     }
     36% {
-        border: 3px solid rgb(0, 40, 70);
+        border: 3px solid rgba(120, 0, 50, .5);
         box-shadow: none;
     }
     54% {
-        border: 3px solid rgb(0, 180, 230);
-        box-shadow: 0 0 15px -1px rgb(0, 180, 230),
-        0 0 12px -1px rgb(0, 180, 230) inset;
+        border: 3px solid #ff0041;
+        box-shadow: 0 0 15px -1px #ff0041,
+        0 0 12px -1px #ff0041 inset;
     }
     100% {
-        border: 3px solid rgb(0, 180, 230);
-        box-shadow: 0 0 15px -1px rgb(0, 180, 230),
-        0 0 12px -1px rgb(0, 180, 230) inset;
+        border: 3px solid #ff0041;
+        box-shadow: 0 0 15px -1px #ff0041,
+        0 0 12px -1px #ff0041 inset;
     }
 }
 
@@ -316,20 +324,37 @@ td {
     padding-bottom: 10%;
 }
 
-.recentnews > hr {
-    border: 1px solid #fff;
+.recentnews > div > div > .news-item > hr {
     background-color: #fff;
-    box-shadow: 0 0 5px #fff,
-    0 0 10px #fff,
-    0 0 20px #fff,
-    0 0 40px #cba011,
-    0 0 80px #cba011,
-    0 0 90px #cba011,
-    0 0 100px #cba011,
-    0 0 150px #cba011;
 }
 .newstitle{
-    color: #ff9418;
+    color: white;
+    font-weight: bold;
+}
+
+.meer-info {
+    color: #ff0041;
+}
+
+.meer-info:hover {
+    color: #ff0041;
+}
+
+.news-body {
+    margin-bottom: 0;
+}
+
+.pink {
+    color: #ff0041;
+}
+
+.news-item {
+    margin-bottom: 5em;
+}
+
+.socials{
+   margin-left: 20%;
+    margin-top: 5%;
 }
 
 /*Sponsors*/
@@ -403,5 +428,3 @@ footer {
     color: white;
     padding-top: 7.5em;
 }
-
-/*Dit is een comment*/
