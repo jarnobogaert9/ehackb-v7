@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <form action="{{ route('register.subscribeTalks') }}" method="post">
+        <form action="{{ route('register.subscribeTalks') }}" method="post" id="form">
             @csrf
             <div class="d-flex">
                 <h3 class="mb-0">Voeg sessies toe</h3>
@@ -14,7 +14,7 @@
                 @foreach($talks->chunk(3) as $row)
                     <div class="card-deck">
                         @foreach($row as $index => $talk)
-                            <div class="card">
+                            <div class="card" id="{{ $talk->id }}">
                                 <img src="{{ asset('storage/'.$talk->photo) }}" class="card-img-top" alt="" title="{{ $talk->title }}"/>
                                 <div class="card-body">
                                     <h3 class="card-title">{{ $talk->title }}</h3>
@@ -34,4 +34,6 @@
             </div>
         </form>
     </div>
+
+    <script src="{{ asset('js/addTalks.js') }}"></script>
 @endsection
