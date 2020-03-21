@@ -33,7 +33,7 @@
                         @csrf
                         <input type="hidden" name="amount" value="0" id="input"/>
 
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn inlineBtn">
                             {{ __('Bevestig') }}
                         </button>
                     </form>

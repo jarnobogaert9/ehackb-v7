@@ -44,7 +44,7 @@
                             <form action="{{ route('sales.placeOrder', $user->id) }}" method="post" id="form">
                                 @csrf
 
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn inlineBtn">
                                     {{ __('Bevestig') }}
                                 </button>
                             </form>

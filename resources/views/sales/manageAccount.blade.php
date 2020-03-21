@@ -4,23 +4,12 @@
     <div class="container">
         @include('partials.kassasearchbar')
         @if(isset($user))
-            <div class="balanceContent">
-                <h1 class="balance-h1">{{ $user->username }}</h1>
-                <div class="row balance-row">
-                    <div class="col-4">
-                        <div class="balanceBox">
-                            <h2 class="balance-h2">Balance</h2>
-                            <p class="balance-p">{{ '€ ' . $user->balance }}</p>
-                        </div>
-                    </div>
-                </div>
-
-                <a href="{{ route('sales.deposit', $user->id) }}">
-                    <button type="submit" class="btn btn-primary">Laad geld op</button>
-                </a>
-                <a href="{{ route('sales.order', $user->id) }}">
-                    <button type="submit" class="btn btn-primary">Maak een bestelling</button>
-                </a>
+            <div>
+                <h2 class="color-red">{{ $user->username }}</h2>
+                <h5>Balance: {{ '€ ' . $user->balance }}</h5>
+                <p></p>
+                <a href="{{ route('sales.deposit', $user->id) }}" class="btn outlineBtn">Laad geld op</a>
+                <a href="{{ route('sales.order', $user->id) }}" class="btn inlineBtn">Maak een bestelling</a>
             </div>
         @else
             <p>No users found</p>

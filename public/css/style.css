@@ -5,11 +5,11 @@ body{
     background-color: #1b1e21;
 }
 
-h1{
+h1, .color-red{
     color: #ff0041;
 }
 
-h3, p, .btn:hover{
+h2, h3, h4, h5, h6, p, .btn:hover{
     color: white;
 }
 
@@ -30,10 +30,6 @@ i{
 
 .btn i{
     font-size: 120%;
-}
-
-.card.selected{
-    background-color: rgba(0, 0, 0, 0.075);
 }
 
 /*
@@ -107,11 +103,15 @@ CARDS
     border: none;
 }
 
+.card.selected{
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
 div:not(#accordion) > .card > .card-header{
     margin-bottom: 1rem;
 }
 
-div:not(#accordion) > .card > .card-body{
+div:not(#accordion) > .card:not(.profileCard) > .card-body{
     padding: 0;
 }
 
@@ -330,4 +330,24 @@ SEATMAP
 
 .selected{
     background-color: #F7B994;
+}
+
+/*
+KASSA
+ */
+#autocomplete{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.autofillList{
+    list-style-type: none;
+    max-width: 20%;
+    padding-left: 1%;
+    color: white;
+}
+
+.autofillList li{
+    padding: 0.1em 0;
+    cursor: pointer;
 }
