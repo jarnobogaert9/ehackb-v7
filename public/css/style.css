@@ -39,7 +39,7 @@ a:hover{
 }
 
 .btnBar{
-    background-color: #f8fafc;
+    background-color: rgba(0, 0, 0, 0.075);
     padding: 0.2em;
 }
 
@@ -56,24 +56,20 @@ a:hover{
 }
 
 .outlineBtn{
-    border: 2px solid #5098c7;
-    color: #5098c7;
+    border: 2px solid white;
 }
 
 .outlineBtn:hover{
-    border: 2px solid #284c63;
     border-radius: 1em;
-    color: #284c63;
 }
 
 .inlineBtn{
+    border: 2px solid #ff0041;
     background-color: #ff0041;
-    color: white;
 }
 
 .inlineBtn:hover{
     background-color: #ff0041;
-    color: white;
 }
 
 .bg-warning{
