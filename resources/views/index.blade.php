@@ -10,7 +10,7 @@
                     <p id="sub-title">Gaming. Tournaments. E-Sports. LAN. Hacking. Keynotes. Boardgames. Movies.
                         Technology.
                         Explore. Meet. Food. Drinks. Enjoy.</p>
-                    <p id="datum">24 - 25 April 2020</p>
+                    <p id="datum">26 - 27 Juni 2020</p>
                 </div>
             </div>
         </div>
@@ -62,8 +62,13 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="socials">
-                        <iframe src="https://discordapp.com/widget?id=688103993368379425&theme=dark" width="300" height="400" allowtransparency="true" frameborder="0"></iframe>
+                    <div class="col-6 socials">
+                        <div class="fb-page" data-href="https://www.facebook.com/EhackB/" data-tabs="" data-width="300" data-height="400" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                            <blockquote cite="https://www.facebook.com/EhackB/" class="fb-xfbml-parse-ignore">
+                                <a href="https://www.facebook.com/EhackB/">EhackB</a>
+                            </blockquote>
+                        </div>
+                        <iframe class="discord" src="https://discordapp.com/widget?id=688103993368379425&theme=dark" width="300" height="400" allowtransparency="true" frameborder="0"></iframe>
                     </div>
                 </div>
             </div>
@@ -80,4 +85,6 @@
     <script src="{{asset('js/hexagons.js')}}"></script>
     <script src="{{asset('js/timer.js')}}"></script>
     <script src="{{asset('js/scroll.js')}}"></script>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/nl_BE/sdk.js#xfbml=1&version=v6.0"></script>
 @endsection
