@@ -375,7 +375,7 @@ td {
 }
 
 .discord {
-    animation: discord-c 2s linear forwards;
+    animation: discord-c 1s linear forwards;
     float:left;
     height:70px;
     width:250px;
@@ -385,7 +385,7 @@ td {
     height:500px;
     width:350px;
     float:left;
-    animation: discord 2s linear forwards;
+    animation: discord 1s linear forwards;
 }
 
 /*Sponsors*/
