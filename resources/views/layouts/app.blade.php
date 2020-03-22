@@ -8,6 +8,7 @@
     <!--<meta name="csrf-token" content="{{ csrf_token() }}">-->
 
     <title>{{ config('app.name') }}</title>
+    <link rel="icon" type="image/png" href="{{asset('imgs/favicon.png')}}">
 
     <!-- Owl Carousel -->
     <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet">
@@ -32,7 +33,7 @@
         <nav class="navbar navbar-expand-md @if(Route::current()->getName() !== 'home') {{"shadow-sm"}} @endif">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    EhackBv7
+                    <img src="{{asset('imgs/logo.png')}}" alt="" class="logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
