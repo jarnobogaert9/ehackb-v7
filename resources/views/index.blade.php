@@ -84,7 +84,6 @@
     <!--<canvas id=c></canvas>-->
     <script src="{{asset('js/hexagons.js')}}"></script>
     <script src="{{asset('js/timer.js')}}"></script>
-    <script src="{{asset('js/scroll.js')}}"></script>
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/nl_BE/sdk.js#xfbml=1&version=v6.0"></script>
 @endsection
