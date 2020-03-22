@@ -152,8 +152,11 @@ NAVBAR
 }
 
 .navbar-brand {
-    color: white;
-    font-size: 1.05em;
+    width: 7.5%;
+}
+
+.navbar-brand img{
+    width: 85%;
 }
 
 #notificationDropdown i{

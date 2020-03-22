@@ -32,7 +32,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md @if(Route::current()->getName() !== 'home') {{"shadow-sm"}} @endif">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('home') }}">
+                <a class="navbar-brand pt-0 pb-0" href="{{ route('home') }}">
                     <img src="{{asset('imgs/logo.png')}}" alt="" class="logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
